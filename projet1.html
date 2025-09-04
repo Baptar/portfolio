@@ -5,33 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projet 1 - Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            AOS.init({ duration: 800, once: true });
+        });
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        html { scroll-behavior: smooth; }
+    </style>
 </head>
-<body class="bg-gray-100 text-gray-900 font-sans">
+<body class="bg-gray-50 text-gray-900">
 
-<!-- Header -->
-<header class="bg-gray-900 text-white p-6 text-center">
-    <h1 class="text-3xl font-bold">Projet 1</h1>
-    <p><a href="index.html" class="underline">← Retour au portfolio</a></p>
-</header>
+<!-- Navbar -->
+<nav class="fixed top-0 w-full bg-white shadow-md z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="index.html" class="font-bold text-xl text-indigo-600">← Retour au portfolio</a>
+    </div>
+</nav>
 
-<!-- Contenu -->
-<section class="p-10 max-w-4xl mx-auto">
-    <img src="images/projet1.jpg" alt="Projet 1" class="rounded-lg mb-6">
-    <h2 class="text-2xl font-bold mb-4">Description</h2>
-    <p>
-        Projet réalisé à l’ENJMIN en équipe de 5 personnes. J’ai été responsable de
-        la programmation gameplay, notamment le système de combats et l’IA des ennemis.
-    </p>
+<!-- Hero Projet -->
+<section class="h-64 flex flex-col justify-center items-center text-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white mt-16">
+    <h1 class="text-4xl md:text-5xl font-extrabold mb-2" data-aos="fade-down">Projet 1</h1>
+    <p class="text-lg md:text-xl" data-aos="fade-up">Gameplay C++ sur Unreal</p>
+</section>
 
-    <h2 class="text-2xl font-bold mt-6 mb-4">Technologies</h2>
-    <ul class="list-disc list-inside">
-        <li>C++</li>
-        <li>Unreal Engine</li>
-        <li>Perforce</li>
-    </ul>
+<!-- Contenu Projet -->
+<section class="py-16 max-w-4xl mx-auto px-6 space-y-12">
 
-    <h2 class="text-2xl font-bold mt-6 mb-4">Vidéo</h2>
-    <iframe class="w-full h-64 rounded-lg" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+    <!-- Description -->
+    <div data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">Description</h2>
+        <p class="text-gray-700 leading-relaxed">
+            Ce projet a été réalisé à l’ENJMIN en équipe de 5 personnes.
+            J’ai été responsable de la programmation gameplay, notamment le système de combats
+            et l’IA des ennemis. Le projet inclut plusieurs niveaux et mécaniques innovantes.
+        </p>
+    </div>
+
+    <!-- Technologies -->
+    <div data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">Technologies</h2>
+        <div class="flex flex-wrap gap-4">
+            <span class="bg-white shadow rounded-lg px-4 py-2 transform transition duration-300 hover:scale-105">C++</span>
+            <span class="bg-white shadow rounded-lg px-4 py-2 transform transition duration-300 hover:scale-105">Unreal Engine</span>
+            <span class="bg-white shadow rounded-lg px-4 py-2 transform transition duration-300 hover:scale-105">Perforce</span>
+        </div>
+    </div>
+
+    <!-- Images / Vidéo -->
+    <div data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">Aperçu</h2>
+        <div class="space-y-6">
+            <img src="images/projet1.jpg" alt="Projet 1" class="rounded-xl shadow-lg">
+            <iframe class="w-full h-64 md:h-96 rounded-xl shadow-lg" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Bouton retour -->
+    <div class="text-center" data-aos="fade-up">
+        <a href="index.html"
+           class="inline-block bg-indigo-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg 
+                transform transition duration-300 hover:scale-105 hover:shadow-xl">
+            ← Retour au portfolio
+        </a>
+    </div>
+
 </section>
 
 </body>
