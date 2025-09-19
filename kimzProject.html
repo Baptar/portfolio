@@ -29,9 +29,9 @@
 <body class="text-gray-900">
 
 <!-- Navbar transparente alignée totalement à gauche -->
-<nav class="fixed top-0 w-full z-50">
-    <div class="flex items-center h-16">
-        <a href="index.html" class="text-yellow-400 font-bold text-xl text-white hover:text-indigo-300 transition px-20">
+<nav class="fixed top-0 w-full z-50 bg-transparent">
+    <div class="flex items-center h-16 px-4 sm:px-6">
+        <a href="index.html" class="font-bold text-lg sm:text-xl text-yellow-400 hover:text-pink-400 transition transform hover:scale-105">
             ← Retour au portfolio
         </a>
     </div>
@@ -74,8 +74,8 @@
     <div class="max-w-6xl mx-auto px-6 md:px-12 lg:px-24 grid grid-cols-1 md:grid-cols-2 items-start">
 
         <!-- Texte à gauche -->
-        <div class="flex flex-col px-12 justify-start items-start">
-            <div class="w-full max-w-3xl ml-24 text-left">
+        <div class="flex flex-col px-4 sm:px-12 justify-start items-start">
+            <div class="w-full max-w-3xl md:ml-24 text-left">
                 <h2 class="text-xl md:text-2xl text-yellow-400 font-joti mb-3">
                     Plongez dans le monde brutal et sauvage d'Albatarcity !
                 </h2>
@@ -266,11 +266,13 @@
     </div>
 </section>
 
-<!-- Bouton flottant téléchargement -->
+<!-- Bouton flottant téléchargement (PC seulement) -->
 <a href="versions/KimzVSlesRagogo.zip" download
-   class="fixed bottom-6 right-6 bg-yellow-400 text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-indigo-500 hover:scale-110 transform transition z-50">
+   class="hidden md:block fixed bottom-6 right-6 bg-yellow-400 text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-indigo-500 hover:scale-110 transform transition z-50">
     ⬇️ Télécharger le jeu
 </a>
+
+
 
 
 <!-- Section Retour Portfolio -->

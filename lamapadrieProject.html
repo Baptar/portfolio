@@ -3,78 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projet 1 - Portfolio</title>
+    <title>Projet – Lamapadrie</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            AOS.init({ duration: 800, once: true });
-        });
-    </script>
+
+    <!-- Google Font Anonymous Pro -->
+    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
-        body { font-family: 'Poppins', sans-serif; }
+        body { font-family: 'Anonymous Pro', monospace; }
         html { scroll-behavior: smooth; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-up { animation: fadeInUp 1s ease-out forwards; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="text-gray-100 bg-gradient-to-b from-gray-900 via-black to-gray-900 bg-fixed">
 
 <!-- Navbar -->
-<nav class="fixed top-0 w-full bg-white shadow-md z-50">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="index.html" class="font-bold text-xl text-indigo-600">← Retour au portfolio</a>
-    </div>
-</nav>
-
-<!-- Hero Projet -->
-<section class="h-64 flex flex-col justify-center items-center text-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white mt-16">
-    <h1 class="text-4xl md:text-5xl font-extrabold mb-2" data-aos="fade-down">Projet 1</h1>
-    <p class="text-lg md:text-xl" data-aos="fade-up">Gameplay C++ sur Unreal</p>
-</section>
-
-<!-- Contenu Projet -->
-<section class="py-16 max-w-4xl mx-auto px-6 space-y-12">
-
-    <!-- Description -->
-    <div data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-4">Description</h2>
-        <p class="text-gray-700 leading-relaxed">
-            Ce projet a été réalisé à l’ENJMIN en équipe de 5 personnes.
-            J’ai été responsable de la programmation gameplay, notamment le système de combats
-            et l’IA des ennemis. Le projet inclut plusieurs niveaux et mécaniques innovantes.
-        </p>
-    </div>
-
-    <!-- Technologies -->
-    <div data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-4">Technologies</h2>
-        <div class="flex flex-wrap gap-4">
-            <span class="bg-white shadow rounded-lg px-4 py-2 transform transition duration-300 hover:scale-105">C++</span>
-            <span class="bg-white shadow rounded-lg px-4 py-2 transform transition duration-300 hover:scale-105">Unreal Engine</span>
-            <span class="bg-white shadow rounded-lg px-4 py-2 transform transition duration-300 hover:scale-105">Perforce</span>
-        </div>
-    </div>
-
-    <!-- Images / Vidéo -->
-    <div data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-4">Aperçu</h2>
-        <div class="space-y-6">
-            <img src="images/projet1.jpg" alt="Projet 1" class="rounded-xl shadow-lg">
-            <iframe class="w-full h-64 md:h-96 rounded-xl shadow-lg" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
-        </div>
-    </div>
-
-    <!-- Bouton retour -->
-    <div class="text-center" data-aos="fade-up">
-        <a href="index.html"
-           class="inline-block bg-indigo-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg 
-                transform transition duration-300 hover:scale-105 hover:shadow-xl">
+<nav class="fixed top-0 w-full z-50 bg-transparent">
+    <div class="flex items-center h-16 px-4 sm:px-6">
+        <a href="index.html" class="font-bold text-lg sm:text-xl text-white hover:text-pink-400 transition transform hover:scale-105">
             ← Retour au portfolio
         </a>
     </div>
+</nav>
 
+<!-- Hero -->
+<div class="relative h-screen flex items-center justify-center">
+    <div class="relative z-10 text-center px-4 sm:px-6 animate-fade-up">
+        <img src="images/Lamapadrie/Lamapadrie_Logo.PNG" alt="Logo Lamapadrie"
+             class="mx-auto w-64 sm:w-80 md:w-[600px] lg:w-[800px] drop-shadow-2xl transform transition duration-700 hover:scale-105">
+
+        <p class="mt-6 text-pink-400 text-lg sm:text-2xl font-semibold">
+            Un projet créé en 3 jours à l’Enjam 🎮
+        </p>
+
+        <div class="mt-8 max-w-3xl mx-auto text-base sm:text-lg md:text-xl leading-relaxed text-gray-200">
+            <p>
+                <strong class="font-semibold text-white">Lamapadrie</strong> est un jeu réalisé en équipe de 5 personnes
+                autour du thème <em>"Trick or Treat"</em>.
+            </p>
+
+            <p class="mt-6">
+                J’y ai travaillé en tant que <strong class="text-pink-400 font-semibold">Gameplay & Systems Programmer</strong>,
+                en développant notamment :
+                <br><br><span class="text-pink-400">✔</span>  Un système de <strong class="text-pink-400 font-semibold">narration progressive</strong>
+                <br><span class="text-pink-400">✔</span>  L’intégration de la <strong class="text-pink-400 font-semibold">webcam</strong> du joueur
+                <br><span class="text-pink-400">✔</span>  L’utilisation du <strong class="text-pink-400 font-semibold">micro</strong> retransmis via une radio in-game
+                <br><br>Un projet pensé dans un contexte de <strong class="font-semibold">créativité rapide et expérimentale</strong>, fidèle à l’esprit d’une jam.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Section principale -->
+<section class="relative py-16 sm:py-24">
+    <div class="relative max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start px-4 sm:px-6">
+
+        <!-- Texte à gauche -->
+        <div class="flex flex-col justify-center items-center md:items-start text-center md:text-center">
+            <div class="w-full max-w-3xl">
+                <p class="text-white text-lg sm:text-xl mb-6">
+                    Streetlight<br><br>
+                    Remote<br><br>
+                    Tree<br><br>
+                    Door<br><br>
+                    Bench<br><br>
+                    TV<br><br>
+                    Chair<br><br>
+                    Candy<br><br><br><br><br>
+                    Streetlight.
+                </p>
+                <br><br><br><br><br><br><br><br><br>
+                <p class="text-white text-lg sm:text-xl mb-6">
+                    <strong class="text-pink-400 font-semibold">Programming - </strong>Baptiste RUBERTE<br><br>
+                    <strong class="text-pink-400 font-semibold">Programming - </strong>Matéo AVVENTURIERO<br><br>
+                    <strong class="text-pink-400 font-semibold">Sound - </strong>Mael HEURARD<br><br>
+                    <strong class="text-pink-400 font-semibold">Game Design - </strong>Pablo VAL<br><br>
+                    <strong class="text-pink-400 font-semibold">Visual Art - </strong>Hugo BAYLE
+                </p>
+            </div>
+        </div>
+
+        <!-- Galerie images à droite -->
+        <div class="flex flex-col gap-6 md:ml-6 gallery">
+            <a href="images/Lamapadrie/Lamapadrie_Image1.png" class="group">
+                <img src="images/Lamapadrie/Lamapadrie_Image1.png" alt="In-game 1"
+                     class="rounded-lg shadow-lg w-full max-w-sm mx-auto object-contain transition-transform duration-300 hover:scale-105 hover:rotate-2 hover:translate-x-1 hover:-translate-y-1 cursor-pointer">
+            </a>
+            <a href="images/Lamapadrie/Lamapadrie_Image2.png" class="group">
+                <img src="images/Lamapadrie/Lamapadrie_Image2.png" alt="In-game 2"
+                     class="rounded-lg shadow-lg w-full max-w-sm mx-auto object-contain transition-transform duration-300 hover:scale-105 hover:-rotate-2 hover:-translate-x-1 hover:-translate-y-1 cursor-pointer">
+            </a>
+            <a href="images/Lamapadrie/Lamapadrie_Image3.png" class="group">
+                <img src="images/Lamapadrie/Lamapadrie_Image3.png" alt="In-game 3"
+                     class="rounded-lg shadow-lg w-full max-w-sm mx-auto object-contain transition-transform duration-300 hover:scale-105 hover:rotate-1 hover:translate-x-1 hover:-translate-y-1 cursor-pointer">
+            </a>
+            <a href="images/Lamapadrie/Lamapadrie_Image4.png" class="group">
+                <img src="images/Lamapadrie/Lamapadrie_Image4.png" alt="In-game 4"
+                     class="rounded-lg shadow-lg w-full max-w-sm mx-auto object-contain transition-transform duration-300 hover:scale-105 hover:rotate-1 hover:translate-x-1 hover:-translate-y-1 cursor-pointer">
+            </a>
+            <a href="images/Lamapadrie/Lamapadrie_EnjamLogo.png" class="group">
+                <img src="images/Lamapadrie/Lamapadrie_EnjamLogo.png" alt="Enjam Logo"
+                     class="rounded-lg shadow-lg w-full max-w-sm mx-auto object-contain transition-transform duration-300 hover:scale-105 hover:rotate-1 hover:translate-x-1 hover:-translate-y-1 cursor-pointer">
+            </a>
+        </div>
+
+        <!-- Lightbox -->
+        <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-80 hidden z-50 flex items-center justify-center p-4">
+            <div class="flex flex-col items-center gap-6">
+                <img id="lightbox-img" src="" alt="Image agrandie" class="max-h-[50vh] sm:max-h-[70vh] max-w-[90vw] sm:max-w-[80vw] rounded-lg shadow-2xl transition-transform duration-300">
+                <button id="close-lightbox" class="bg-indigo-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-indigo-500 transition">
+                    Fermer
+                </button>
+            </div>
+        </div>
+    </div>
 </section>
+
+<!-- Section Compétences -->
+<section class="relative py-12 sm:py-16">
+    <div class="relative max-w-4xl mx-auto text-center px-4 sm:px-6">
+        <h2 class="text-3xl font-bold text-white mb-8">Technologies & Compétences</h2>
+        <div class="flex flex-wrap justify-center gap-4">
+            <span class="px-4 py-2 bg-indigo-600 text-white rounded-full shadow-lg text-lg">C#</span>
+            <span class="px-4 py-2 bg-indigo-600 text-white rounded-full shadow-lg text-lg">Unity</span>
+            <span class="px-4 py-2 bg-indigo-600 text-white rounded-full shadow-lg text-lg">Git</span>
+            <span class="px-4 py-2 bg-indigo-600 text-white rounded-full shadow-lg text-lg">Gameplay Programming</span>
+            <span class="px-4 py-2 bg-indigo-600 text-white rounded-full shadow-lg text-lg">System Programming</span>
+        </div>
+    </div>
+</section>
+
+<!-- Bouton flottant téléchargement -->
+<a href="versions/CovetousCove.zip" download
+   id="download-btn"
+   class="fixed bottom-6 right-6 bg-indigo-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full font-semibold shadow-lg hover:bg-indigo-500 hover:scale-110 transform transition z-50">
+    ⬇️ Télécharger le jeu
+</a>
+
+<!-- Section Retour Portfolio -->
+<section class="relative py-10">
+    <div class="relative flex flex-col items-center justify-center text-center">
+        <a href="index.html"
+           class="inline-block px-4 py-2 sm:px-8 sm:py-4 rounded-full text-white text-lg sm:text-xl font-semibold border-2 border-white hover:bg-white hover:text-black transition transform hover:scale-110 shadow-lg">
+            ⬅️ Retour au Portfolio
+        </a>
+    </div>
+</section>
+
+<script>
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('close-lightbox');
+
+    document.querySelectorAll('.gallery a').forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            lightboxImg.src = link.href;
+            lightbox.classList.remove('hidden');
+        });
+    });
+
+    closeBtn.addEventListener('click', () => {
+        lightbox.classList.add('hidden');
+    });
+
+    lightbox.addEventListener('click', e => {
+        if(e.target === lightbox) lightbox.classList.add('hidden');
+    });
+
+    // Masquer le bouton téléchargement sur mobile/tablette
+    const downloadBtn = document.getElementById('download-btn');
+    const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+    if (isMobile) downloadBtn.style.display = 'none';
+</script>
 
 </body>
 </html>
