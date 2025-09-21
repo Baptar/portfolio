@@ -41,7 +41,7 @@
 <!-- Navbar transparente alignée totalement à gauche -->
 <nav class="fixed top-0 w-full z-50 bg-transparent">
     <div class="flex items-center h-16 px-4 sm:px-6">
-        <a href="index.html" class="font-bold text-lg sm:text-xl text-yellow-400 hover:text-pink-400 transition transform hover:scale-105">
+        <a href="index.html" class="hidden md:block font-bold text-lg sm:text-xl text-yellow-400 hover:text-pink-400 transition transform hover:scale-105">
             ← Retour au portfolio
         </a>
     </div>
@@ -229,6 +229,11 @@
             lightbox.classList.add('hidden');
         }
     });
+
+    // Masquer le bouton téléchargement sur mobile/tablette
+    const downloadBtn = document.getElementById('download-btn');
+    const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+    if (isMobile) downloadBtn.style.display = 'none';
 </script>
 
 <script>

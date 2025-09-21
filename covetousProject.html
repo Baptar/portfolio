@@ -29,10 +29,9 @@
 <body class="text-gray-900">
 
 <!-- Navbar transparente -->
-<nav class="fixed top-0 w-full z-50">
-    <div class="flex items-center h-16">
-        <!-- Ce lien est masqué sur mobile, visible à partir du md -->
-        <a href="index.html" class="hidden md:block font-bold text-xl text-white hover:text-indigo-300 transition px-20">
+<nav class="fixed top-0 w-full z-50 bg-transparent">
+    <div class="flex items-center h-16 px-4 sm:px-6">
+        <a href="index.html" class="hidden md:block font-bold text-lg sm:text-xl text-white hover:text-indigo-400 transition transform hover:scale-105">
             ← Retour au portfolio
         </a>
     </div>
@@ -126,6 +125,11 @@
                     lightbox.classList.add('hidden');
                 }
             });
+
+            // Masquer le bouton téléchargement sur mobile/tablette
+            const downloadBtn = document.getElementById('download-btn');
+            const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+            if (isMobile) downloadBtn.style.display = 'none';
         </script>
     </div>
 </section>
