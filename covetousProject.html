@@ -13,27 +13,33 @@
         body {
             font-family: 'Galindo', cursive;
         }
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black; /* évite les bandes blanches */
+        }
         html { scroll-behavior: smooth; }
     </style>
 </head>
 <body class="text-gray-900">
 
-<!-- Navbar transparente alignée totalement à gauche -->
+<!-- Navbar transparente -->
 <nav class="fixed top-0 w-full z-50">
     <div class="flex items-center h-16">
-        <a href="index.html" class="font-bold text-xl text-white hover:text-indigo-300 transition px-6 sm:px-20">
+        <!-- Ce lien est masqué sur mobile, visible à partir du md -->
+        <a href="index.html" class="hidden md:block font-bold text-xl text-white hover:text-indigo-300 transition px-20">
             ← Retour au portfolio
         </a>
     </div>
 </nav>
 
-<!-- Hero avec logo et texte -->
+<!-- Hero -->
 <div class="relative h-screen bg-fixed bg-center bg-cover" style="background-image: url('images/Covetous/CovetousCove_BG.PNG');">
     <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center px-6">
-        <!-- Logo du jeu -->
         <img src="images/Covetous/CovetousCove_Logo.PNG" alt="Logo Covetous Cove" class="w-3/4 sm:w-2/3 md:w-1/3 drop-shadow-2xl mb-4">
 
-        <!-- Petit texte descriptif -->
         <p class="text-center text-white text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed mt-12">
             <strong>Covetous Cove</strong> est un shoot’em up multijoueur local développé avec Unity (C#).<br><br>
             J’ai travaillé comme <strong>Gameplay & System Programmer</strong>, en charge de la conception et de l’implémentation des vagues d’ennemis, la gestion des pouvoirs, les interactions multijoueur, le combat entre les deux joueurs ainsi que le déplacement des personnages.<br><br>
