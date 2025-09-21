@@ -3,35 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projet 2 - Portfolio</title>
+    <title>Projet – Bibliotech</title>
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font Galindo -->
+    <link href="https://fonts.googleapis.com/css2?family=Galindo&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/MarbleMadness/Marble_Logo.png">
+
+    <style>
+        body {
+            font-family: 'Galindo', cursive;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background-color: black;
+        }
+        html { scroll-behavior: smooth; }
+    </style>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Joti+One&family=Lexend+Deca&display=swap" rel="stylesheet">
+
+    <style>
+        .font-joti { font-family: 'Joti One', cursive; }
+        .font-lexend { font-family: 'Lexend Deca', sans-serif; }
+    </style>
+
 </head>
-<body class="bg-gray-100 text-gray-900 font-sans">
+<body class="text-gray-900">
 
-<!-- Header -->
-<header class="bg-gray-900 text-white p-6 text-center">
-    <h1 class="text-3xl font-bold">Projet 2</h1>
-    <p><a href="index.html" class="underline">← Retour au portfolio</a></p>
-</header>
+<!-- Navbar transparente -->
+<nav class="fixed top-0 w-full z-50">
+    <div class="flex items-center h-16">
+        <!-- Ce lien est masqué sur mobile, visible à partir du md -->
+        <a href="index.html" class="hidden md:block font-bold text-xl text-white text-yellow-400 hover:text-pink-400 transition px-20">
+            ← Retour au portfolio
+        </a>
+    </div>
+</nav>
 
-<!-- Contenu -->
-<section class="p-10 max-w-4xl mx-auto">
-    <img src="images/projet2.jpg" alt="Projet 2" class="rounded-lg mb-6">
-    <h2 class="text-2xl font-bold mb-4">Description</h2>
-    <p>
-        Projet réalisé à l’ENJMIN en équipe de 5 personnes. J’ai été responsable de
-        la programmation gameplay, notamment le système de combats et l’IA des ennemis.
-    </p>
+<!-- Hero avec logo et texte -->
+<div class="relative h-screen bg-fixed bg-black md:bg-[url('images/Bibliotech/Bibliotech_BG.png')] bg-center bg-cover md:bg-fixed relative">
+    <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center px-6">
+        <!-- Logo du jeu -->
+        <img src="images/Bibliotech/Bibliotech_Logo.png" alt="Marble Madness" class="w-[700px] drop-shadow-2xl mb-4">
 
-    <h2 class="text-2xl font-bold mt-6 mb-4">Technologies</h2>
-    <ul class="list-disc list-inside">
-        <li>C++</li>
-        <li>Unreal Engine</li>
-        <li>Perforce</li>
-    </ul>
+        <!-- Texte descriptif -->
+        <div class="text-center text-white text-base md:text-lg max-w-2xl leading-relaxed mt-24">
+            <strong class="text-yellow-400 font-semibold">Bibliotech</strong> est un projet réalisé en 1 semaine en équipe de 10 personnes, 
+            dans le cadre de la fête foraine numérique Eniarof, organisée par le Cnam-Enjmin et l’ÉESI d’Angoulême.<br><br>
 
-    <h2 class="text-2xl font-bold mt-6 mb-4">Vidéo</h2>
-    <iframe class="w-full h-64 rounded-lg" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+            J’ai réalisé ce projet en tant que <strong>Gameplay Programmer</strong>, en développant notamment :
+            <br><br>
+            <span class="text-pink-400">✔</span>  Communication entre le contrôleur alternatif et le jeu
+            <br><span class="text-pink-400">✔</span>  Mise en place d’un système de sauvegarde et de publication avec une communication entre plusieurs écrans
+            <br><span class="text-pink-400">✔</span>  Création d’une bibliothèque interactive et attrayante
+            <br><br><br>
+        </div>
+    </div>
+</div>
+
+<!-- Section principale -->
+<section class="relative w-full bg-black md:bg-[url('images/Bibliotech/Bibliotech_BG.png')] bg-center bg-cover md:bg-fixed relative">
+    <!-- Overlay noir -->
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+
+    <!-- Contenu centré -->
+    <div class="relative max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-8 items-center">
+        <!-- Texte à gauche -->
+        <div class="order-2 md:order-1 text-white">
+            <h2 class="text-3xl font-bold mb-4 text-yellow-400">PRINCIPE DU JEU</h2>
+            <p class="text-lg leading-relaxed">
+                📚 Écrire un livre, c’est simple en fait…
+                <br><br>📙 Les éditions Achète ! ont sorti une application révolutionnaire à base d’intelligence
+                artificielle.
+                <br><br>📖 Grâce à elle, n’importe qui peut devenir auteurice à succès !
+                <br><br>📘 L’application, grâce à un simple questionnaire, établit rapidement un profil extrêmement précis de
+                votre personnalité et génère automatiquement le livre que VOUS auriez rêvé d’écrire !
+            </p>
+        </div>
+
+        <!-- Image à droite -->
+        <div class="order-1 md:order-2 flex justify-center">
+            <img src="images/Bibliotech/Bibliotech_Image2.JPG" alt="Marble Madness gameplay" class="rounded-lg shadow-lg w-full max-w-md object-contain">
+        </div>
+    </div>
+</section>
+
+<section class="relative w-full bg-fixed bg-black md:bg-[url('images/Bibliotech/Bibliotech_BG.png')] bg-center bg-cover md:bg-fixed relative">
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+    <div class="relative max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-8 items-center">
+        
+        <!-- Image à gauche -->
+        <div class="order-1 md:order-1 flex justify-center">
+            <img src="images/Bibliotech/Bibliotech_Image3.JPG" alt="Marble Madness controller" class="rounded-lg shadow-lg w-full max-w-md object-contain">
+        </div>
+        <!-- Texte à droite -->
+        <div class="order-2 md:order-2 text-white">
+            <h2 class="text-3xl font-bold mb-4 text-yellow-400">DETAILS D'UNE PARTIE</h2>
+            <p class="text-lg leading-relaxed">
+                Le jeu est en deux parties : 
+                <br><br>✍ Une partie questionnaire utilisée par la·e
+                joueur·euse sur le stand
+                <br><br>📚 Une partie bibliothèque virtuelle utilisée par le public (et
+                la·e joueur·euse une fois son livre créé).
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="relative w-full bg-fixed bg-black md:bg-[url('images/Bibliotech/Bibliotech_BG.png')] bg-center bg-cover md:bg-fixed relative">
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+    <div class="relative max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-8 items-center">
+        <!-- Texte à gauche -->
+        <div class="order-2 md:order-1 text-white">
+            <h2 class="text-3xl font-bold mb-4 text-yellow-400">QUESTIONNAIRE</h2>
+            <p class="text-lg leading-relaxed">
+                Pour générer un livre, la·e joueur·euse doit répondre à un certain nombre de
+                questions à deux réponses, par l’interface des deux boutons du stand.
+                <br><br>Il n’y a pas de vraie IA qui pilote le questionnaire : <br>les questions et les réponses ont
+                été soigneusement écrites et leurs effets sur la génération sont
+                entièrement scriptés.
+            </p>
+        </div>
+        <!-- Image à droite -->
+        <div class="order-1 md:order-2 flex justify-center">
+            <img src="images/Bibliotech/Bibliotech_Questionnaire.png" alt="Cartes Marble Madness" class="rounded-lg shadow-lg w-full max-w-md object-contain">
+        </div>
+    </div>
+</section>
+
+<section class="relative w-full bg-fixed bg-black md:bg-[url('images/Bibliotech/Bibliotech_BG.png')] bg-center bg-cover md:bg-fixed relative">
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+    <div class="relative max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-8 items-center">
+
+        <!-- Image à gauche -->
+        <div class="order-1 md:order-1 flex justify-center">
+            <img src="images/Bibliotech/Bibliotech_Publi1.png" alt="Marble Madness controller" class="rounded-lg shadow-lg w-full max-w-md object-contain">
+        </div>
+        <!-- Texte à droite -->
+        <div class="order-2 md:order-2 text-white">
+            <h2 class="text-3xl font-bold mb-4 text-yellow-400">PUBLIER SON LIVRE</h2>
+            <p class="text-lg leading-relaxed">
+                Une fois le questionnaire complété, le joueur peut publier son livre, qui sera automatiquement ajouté à la bibliothèque visible sur l’autre écran.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="relative w-full bg-fixed bg-black md:bg-[url('images/Bibliotech/Bibliotech_BG.png')] bg-center bg-cover md:bg-fixed relative">
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+    <div class="relative max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-8 items-center">
+
+        <!-- Texte à droite -->
+        <div class="order-2 md:order-1 text-white">
+            <h2 class="text-3xl font-bold mb-4 text-yellow-400">BIBLIOTHEQUE VIRTUELLE</h2>
+            <p class="text-lg leading-relaxed">
+                Interface qui regroupe et propose tous les ouvrages créés par les joueureuses durant l’événement.
+                <br><br>Une souris permet de la parcourir et de sélectionner des ouvrages pour les consulter.
+                <br><br>Tous les livres sont sauvegardés dans un fichier .json sur le disque dur pour assurer la pérennité de la bibliothèque !
+                <br><br>Le public peut la consulter à tout moment, même pendant que quelqu’un est en train de remplir le questionnaire.
+
+            </p>
+        </div>
+        <!-- Image à gauche -->
+        <div class="order-1 md:order-2 flex justify-center">
+            <img src="images/Bibliotech/Bibliotech_Bibli.png" alt="Marble Madness controller" class="rounded-lg shadow-lg w-full max-w-md object-contain">
+        </div>
+        
+    </div>
+</section>
+
+<section class="relative w-full bg-fixed bg-black md:bg-[url('images/Bibliotech/Bibliotech_BG.png')] bg-center bg-cover md:bg-fixed relative">
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+    <div class="relative max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-8 items-center">
+        
+        <!-- Texte à droite -->
+        <div class="order-2 md:order-2 text-white">
+            <h2 class="text-3xl font-bold mb-4 text-yellow-400">EQUIPE</h2>
+            <p class="text-lg leading-relaxed">
+                <strong class="text-pink-400 font-semibold">Programming · </strong>Baptiste RUBERTE<br>
+                <strong class="text-pink-400 font-semibold">Programming · </strong>Julien OUDOT<br><br>
+                <strong class="text-pink-400 font-semibold">Game design · </strong>Matthieu GOLSENNE<br>
+                <strong class="text-pink-400 font-semibold">Game design · </strong>Brice BONNEFOND<br>
+                <strong class="text-pink-400 font-semibold">Game design · </strong>Samy GACI<br><br>
+                <strong class="text-pink-400 font-semibold">Visual Art · </strong>Hugo BAYLE<br>
+                <strong class="text-pink-400 font-semibold">Visual Art · </strong>Gabriele ENNAOUAJI<br><br>
+                <strong class="text-pink-400 font-semibold">Sound · </strong>Tanguy BRUSCHI<br><br>
+                <strong class="text-pink-400 font-semibold">Ergonomie · </strong>Olivia ERUSSARD<br><br>
+                <strong class="text-pink-400 font-semibold">Management · </strong>Florian LECAREUX<br><br><br><br>
+            </p>
+        </div>
+
+        <!-- Image à gauche -->
+        <div class="order-1 md:order-1 flex justify-center">
+            <img src="images/Bibliotech/Bibliotech_Team.JPG" alt="Marble Madness team" class="rounded-lg shadow-lg w-full max-w-md object-contain">
+        </div>
+    </div>
+</section>
+
+<section class="relative w-full bg-fixed bg-black md:bg-[url('images/Bibliotech/Bibliotech_BG.png')] bg-center bg-cover md:bg-fixed relative">
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+    <div class="relative max-w-6xl mx-auto px-6 py-12">
+        <h2 class="text-3xl font-bold mb-4 text-yellow-400 text-center">TRAILER</h2>
+        <!-- Vidéo principale -->
+        <div class="rounded-lg shadow-lg overflow-hidden w-full">
+            <video controls poster="images/Bibliotech/Bibliotech_TrailerImage.png" class="w-full h-auto rounded-lg">
+                <source src="images/Bibliotech/Bibliotech_Trailer.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+            </video>
+        </div>
+    </div>
+</section>
+
+<!-- Section Compétences -->
+<section class="relative w-full py-12 bg-fixed bg-black md:bg-[url('images/Bibliotech/Bibliotech_BG.png')] bg-center bg-cover md:bg-fixed relative">
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+    <div class="relative max-w-4xl mx-auto text-center px-6 py-16">
+        <h2 class="text-3xl font-bold text-white mb-8">Technologies & Compétences</h2>
+
+        <div class="flex flex-wrap justify-center gap-4">
+            <span class="px-4 py-2 bg-pink-400 text-white rounded-full shadow-lg text-lg">C#</span>
+            <span class="px-4 py-2 bg-pink-400 text-white rounded-full shadow-lg text-lg">Unity</span>
+            <span class="px-4 py-2 bg-pink-400 text-white rounded-full shadow-lg text-lg">Arduino</span>
+            <span class="px-4 py-2 bg-pink-400 text-white rounded-full shadow-lg text-lg">Git</span>
+            <span class="px-4 py-2 bg-pink-400 text-white rounded-full shadow-lg text-lg">Gameplay Programming</span>
+            <span class="px-4 py-2 bg-pink-400 text-white rounded-full shadow-lg text-lg">Sauvegarde</span>
+            <span class="px-4 py-2 bg-pink-400 text-white rounded-full shadow-lg text-lg">Installation Physique</span>
+            <span class="px-4 py-2 bg-pink-400 text-white rounded-full shadow-lg text-lg">Communication Hardware/Software</span>
+        </div>
+    </div>
+</section>
+
+<!-- Section Retour Portfolio -->
+<section class="relative w-full bg-fixed bg-fixed bg-black md:bg-[url('images/Bibliotech/Bibliotech_BG.png')] bg-center bg-cover md:bg-fixed relative">
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+    <div class="relative flex flex-col items-center justify-center text-center py-10">
+        <a href="index.html"
+           class="inline-block px-8 py-4 rounded-full text-white text-xl font-semibold border-2 border-white hover:bg-white hover:text-black transition transform hover:scale-110 shadow-lg">
+            ⬅️ Retour au Portfolio
+        </a>
+    </div>
 </section>
 
 </body>
