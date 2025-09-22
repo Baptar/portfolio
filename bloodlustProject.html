@@ -3,77 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projet 1 - Portfolio</title>
+    <title>Projet – Bloodlust Brawl</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            AOS.init({ duration: 800, once: true });
-        });
-    </script>
+
+    <!-- Google Font Galindo -->
+    <link href="https://fonts.googleapis.com/css2?family=Galindo&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/MarbleMadness/Marble_Logo.png">
+
     <style>
-        body { font-family: 'Poppins', sans-serif; }
+        body {
+            font-family: 'Galindo', cursive;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background-color: black;
+        }
         html { scroll-behavior: smooth; }
     </style>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Joti+One&family=Lexend+Deca&display=swap" rel="stylesheet">
+
+    <style>
+        .font-joti { font-family: 'Joti One', cursive; }
+        .font-lexend { font-family: 'Lexend Deca', sans-serif; }
+    </style>
+
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="text-gray-900">
 
-<!-- Navbar -->
-<nav class="fixed top-0 w-full bg-white shadow-md z-50">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="index.html" class="font-bold text-xl text-indigo-600">← Retour au portfolio</a>
-    </div>
-</nav>
-
-<!-- Hero Projet -->
-<section class="h-64 flex flex-col justify-center items-center text-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white mt-16">
-    <h1 class="text-4xl md:text-5xl font-extrabold mb-2" data-aos="fade-down">Projet 1</h1>
-    <p class="text-lg md:text-xl" data-aos="fade-up">Gameplay C++ sur Unreal</p>
-</section>
-
-<!-- Contenu Projet -->
-<section class="py-16 max-w-4xl mx-auto px-6 space-y-12">
-
-    <!-- Description -->
-    <div data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-4">Description</h2>
-        <p class="text-gray-700 leading-relaxed">
-            Ce projet a été réalisé à l’ENJMIN en équipe de 5 personnes.
-            J’ai été responsable de la programmation gameplay, notamment le système de combats
-            et l’IA des ennemis. Le projet inclut plusieurs niveaux et mécaniques innovantes.
-        </p>
-    </div>
-
-    <!-- Technologies -->
-    <div data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-4">Technologies</h2>
-        <div class="flex flex-wrap gap-4">
-            <span class="bg-white shadow rounded-lg px-4 py-2 transform transition duration-300 hover:scale-105">C++</span>
-            <span class="bg-white shadow rounded-lg px-4 py-2 transform transition duration-300 hover:scale-105">Unreal Engine</span>
-            <span class="bg-white shadow rounded-lg px-4 py-2 transform transition duration-300 hover:scale-105">Perforce</span>
-        </div>
-    </div>
-
-    <!-- Images / Vidéo -->
-    <div data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-4">Aperçu</h2>
-        <div class="space-y-6">
-            <img src="images/projet1.jpg" alt="Projet 1" class="rounded-xl shadow-lg">
-            <iframe class="w-full h-64 md:h-96 rounded-xl shadow-lg" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
-        </div>
-    </div>
-
-    <!-- Bouton retour -->
-    <div class="text-center" data-aos="fade-up">
-        <a href="index.html"
-           class="inline-block bg-indigo-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg 
-                transform transition duration-300 hover:scale-105 hover:shadow-xl">
+<!-- Navbar transparente -->
+<nav class="fixed top-0 w-full z-50">
+    <div class="flex items-center h-16">
+        <!-- Ce lien est masqué sur mobile, visible à partir du md -->
+        <a href="index.html" class="hidden md:block font-bold text-xl text-white text-yellow-400 hover:text-pink-400 transition px-20">
             ← Retour au portfolio
         </a>
     </div>
+</nav>
 
+<!-- Hero avec logo et texte -->
+<div class="relative h-screen bg-fixed bg-black md:bg-[url('images/Bloodlust/Bloodlust_BG2.png')] bg-center bg-cover md:bg-fixed relative">
+    <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center px-6">
+        <!-- Logo du jeu -->
+        <img src="images/Bloodlust/Bloodlust_Logo.png" alt="Marble Madness" class="w-[700px] drop-shadow-2xl mb-4">
+
+        <!-- Texte descriptif -->
+        <div class="text-center text-white text-base md:text-lg max-w-2xl leading-relaxed mt-12">
+            <strong class="text-yellow-400 font-semibold">Bloodlust Brawl</strong> est un projet développé en solo sous <strong>Unreal Engine</strong>, pensé comme un jeu multijoueur local compétitif.
+            <br><br>J’y ai notamment :
+            <br><br> ⚔️ Développé un  <strong class="text-pink-400 font-semibold">système de combat</strong> complet, mêlant attaques de mêlée et attaques spéciales propres à chaque personnage.
+            <br><br> 🌀 Mis en place des <strong class="text-pink-400 font-semibold">mécaniques de poussée</strong> et de collisions, au cœur du dynamisme et de la compétition.
+            <br><br> 🎮 Construit une expérience <strong class="text-pink-400 font-semibold">multijoueur locale</strong> fluide et équilibrée, pensée pour être amusant et rejouable.
+            <br><br><br>
+        </div>
+    </div>
+</div>
+
+<!-- Section principale -->
+<section class="relative w-full bg-black md:bg-[url('images/Bloodlust/Bloodlust_BG2.png')] bg-center bg-cover md:bg-fixed relative">
+    <!-- Overlay noir -->
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+
+    <!-- Contenu centré -->
+    <div class="relative max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-8 items-center">
+        <!-- Texte à gauche -->
+        <div class="order-2 md:order-1 text-white">
+            <h2 class="text-3xl font-bold mb-4 text-yellow-400">PRINCIPE DU JEU</h2>
+            <p class="text-lg leading-relaxed">
+                Ici, l’objectif est simple : <br>pousser ses adversaires en dehors de l’île.<br><br>
+                Chaque partie met les joueurs face à des situations dynamiques où la stratégie et les déplacements rapides sont essentiels pour rester sur l’île et remporter la victoire.
+            </p>
+        </div>
+
+        <!-- Image à droite -->
+        <div class="order-1 md:order-2 w-full max-w-3xl mx-auto">
+            <video autoplay loop muted playsinline class="w-full h-auto rounded-lg shadow-lg object-cover">
+                <source src="images/Bloodlust/Bloodlust_Death.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+            </video>
+        </div>
+    </div>
+</section>
+
+<section class="relative w-full bg-fixed bg-black md:bg-[url('images/Bloodlust/Bloodlust_BG2.png')] bg-center bg-cover md:bg-fixed relative">
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+    <div class="relative max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-8 items-center">
+
+        <!-- Image à gauche -->
+        <div class="order-1 md:order-1 flex justify-center">
+            <img src="images/Bibliotech/Bibliotech_Image3.JPG" alt="Marble Madness controller" class="rounded-lg shadow-lg w-full max-w-md object-contain">
+        </div>
+        <!-- Texte à droite -->
+        <div class="order-2 md:order-2 text-white">
+            <h2 class="text-3xl font-bold mb-4 text-yellow-400">DETAILS D'UNE PARTIE</h2>
+            <p class="text-lg leading-relaxed">
+                Le jeu est en deux parties :
+                <br><br>✍ Une partie questionnaire utilisée par la·e
+                joueur·euse sur le stand
+                <br><br>📚 Une partie bibliothèque virtuelle utilisée par le public (et
+                la·e joueur·euse une fois son livre créé).
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="relative w-full bg-fixed bg-black md:bg-[url('images/Bloodlust/Bloodlust_BG2.png')] bg-center bg-cover md:bg-fixed relative">
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+    <div class="relative max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-8 items-center">
+        <!-- Texte à gauche -->
+        <div class="order-2 md:order-1 text-white">
+            <h2 class="text-3xl font-bold mb-4 text-yellow-400">QUESTIONNAIRE</h2>
+            <p class="text-lg leading-relaxed">
+                Pour générer un livre, la·e joueur·euse doit répondre à un certain nombre de
+                questions à deux réponses, par l’interface des deux boutons du stand.
+                <br><br>Il n’y a pas de vraie IA qui pilote le questionnaire : <br>les questions et les réponses ont
+                été soigneusement écrites et leurs effets sur la génération sont
+                entièrement scriptés.
+            </p>
+        </div>
+        <!-- Image à droite -->
+        <div class="order-1 md:order-2 flex justify-center">
+            <img src="images/Bibliotech/Bibliotech_Questionnaire.png" alt="Cartes Marble Madness" class="rounded-lg shadow-lg w-full max-w-md object-contain">
+        </div>
+    </div>
+</section>
+
+<section class="relative w-full bg-fixed bg-black md:bg-[url('images/Bloodlust/Bloodlust_BG2.png')] bg-center bg-cover md:bg-fixed relative">
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+    <div class="relative max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-8 items-center">
+
+        <!-- Image à gauche -->
+        <div class="order-1 md:order-1 flex justify-center">
+            <img src="images/Bibliotech/Bibliotech_Publi1.png" alt="Marble Madness controller" class="rounded-lg shadow-lg w-full max-w-md object-contain">
+        </div>
+        <!-- Texte à droite -->
+        <div class="order-2 md:order-2 text-white">
+            <h2 class="text-3xl font-bold mb-4 text-yellow-400">PUBLIER SON LIVRE</h2>
+            <p class="text-lg leading-relaxed">
+                Une fois le questionnaire complété, le joueur peut publier son livre, qui sera automatiquement ajouté à la bibliothèque visible sur l’autre écran.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="relative w-full bg-fixed bg-black md:bg-[url('images/Bloodlust/Bloodlust_BG2.png')] bg-center bg-cover md:bg-fixed relative">
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+    <div class="relative max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-8 items-center">
+
+        <!-- Texte à droite -->
+        <div class="order-2 md:order-1 text-white">
+            <h2 class="text-3xl font-bold mb-4 text-yellow-400">BIBLIOTHEQUE VIRTUELLE</h2>
+            <p class="text-lg leading-relaxed">
+                Interface qui regroupe et propose tous les ouvrages créés par les joueureuses durant l’événement.
+                <br><br>Une souris permet de la parcourir et de sélectionner des ouvrages pour les consulter.
+                <br><br>Tous les livres sont sauvegardés dans un fichier .json sur le disque dur pour assurer la pérennité de la bibliothèque !
+                <br><br>Le public peut la consulter à tout moment, même pendant que quelqu’un est en train de remplir le questionnaire.
+
+            </p>
+        </div>
+        <!-- Image à gauche -->
+        <div class="order-1 md:order-2 flex justify-center">
+            <img src="images/Bibliotech/Bibliotech_Bibli.png" alt="Marble Madness controller" class="rounded-lg shadow-lg w-full max-w-md object-contain">
+        </div>
+
+    </div>
+</section>
+
+<section class="relative w-full bg-fixed bg-black md:bg-[url('images/Bloodlust/Bloodlust_BG2.png')] bg-center bg-cover md:bg-fixed relative">
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+    <div class="relative max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-8 items-center">
+
+        <!-- Texte à droite -->
+        <div class="order-2 md:order-2 text-white">
+            <h2 class="text-3xl font-bold mb-4 text-yellow-400">EQUIPE</h2>
+            <p class="text-lg leading-relaxed">
+                <strong class="text-pink-400 font-semibold">Programming · </strong>Baptiste RUBERTE<br>
+                <strong class="text-pink-400 font-semibold">Programming · </strong>Julien OUDOT<br><br>
+                <strong class="text-pink-400 font-semibold">Game design · </strong>Matthieu GOLSENNE<br>
+                <strong class="text-pink-400 font-semibold">Game design · </strong>Brice BONNEFOND<br>
+                <strong class="text-pink-400 font-semibold">Game design · </strong>Samy GACI<br><br>
+                <strong class="text-pink-400 font-semibold">Visual Art · </strong>Hugo BAYLE<br>
+                <strong class="text-pink-400 font-semibold">Visual Art · </strong>Gabriele ENNAOUAJI<br><br>
+                <strong class="text-pink-400 font-semibold">Sound · </strong>Tanguy BRUSCHI<br><br>
+                <strong class="text-pink-400 font-semibold">Ergonomie · </strong>Olivia ERUSSARD<br><br>
+                <strong class="text-pink-400 font-semibold">Management · </strong>Florian LECAREUX<br><br><br><br>
+            </p>
+        </div>
+
+        <!-- Image à gauche -->
+        <div class="order-1 md:order-1 flex justify-center">
+            <img src="images/Bibliotech/Bibliotech_Team.JPG" alt="Marble Madness team" class="rounded-lg shadow-lg w-full max-w-md object-contain">
+        </div>
+    </div>
+</section>
+
+<section class="relative w-full bg-fixed bg-black md:bg-[url('images/Bloodlust/Bloodlust_BG2.png')] bg-center bg-cover md:bg-fixed relative">
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+    <div class="relative max-w-6xl mx-auto px-6 py-12">
+        <h2 class="text-3xl font-bold mb-4 text-yellow-400 text-center">TRAILER</h2>
+        <!-- Vidéo principale -->
+        <div class="rounded-lg shadow-lg overflow-hidden w-full">
+            <video controls poster="images/Bibliotech/Bibliotech_TrailerImage.png" class="w-full h-auto rounded-lg">
+                <source src="images/Bibliotech/Bibliotech_Trailer.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+            </video>
+        </div>
+    </div>
+</section>
+
+<!-- Section Compétences -->
+<section class="relative w-full py-12 bg-fixed bg-black md:bg-[url('images/Bloodlust/Bloodlust_BG2.png')] bg-center bg-cover md:bg-fixed relative">
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+    <div class="relative max-w-4xl mx-auto text-center px-6 py-16">
+        <h2 class="text-3xl font-bold text-white mb-8">Technologies & Compétences</h2>
+
+        <div class="flex flex-wrap justify-center gap-4">
+            <span class="px-4 py-2 bg-pink-400 text-white rounded-full shadow-lg text-lg">C#</span>
+            <span class="px-4 py-2 bg-pink-400 text-white rounded-full shadow-lg text-lg">Unity</span>
+            <span class="px-4 py-2 bg-pink-400 text-white rounded-full shadow-lg text-lg">Arduino</span>
+            <span class="px-4 py-2 bg-pink-400 text-white rounded-full shadow-lg text-lg">Git</span>
+            <span class="px-4 py-2 bg-pink-400 text-white rounded-full shadow-lg text-lg">Gameplay Programming</span>
+            <span class="px-4 py-2 bg-pink-400 text-white rounded-full shadow-lg text-lg">Sauvegarde</span>
+            <span class="px-4 py-2 bg-pink-400 text-white rounded-full shadow-lg text-lg">Installation Physique</span>
+            <span class="px-4 py-2 bg-pink-400 text-white rounded-full shadow-lg text-lg">Communication Hardware/Software</span>
+        </div>
+    </div>
+</section>
+
+<!-- Section Retour Portfolio -->
+<section class="relative w-full bg-fixed bg-fixed bg-black md:bg-[url('images/Bloodlust/Bloodlust_BG2.png')] bg-center bg-cover md:bg-fixed relative">
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+    <div class="relative flex flex-col items-center justify-center text-center py-10">
+        <a href="index.html"
+           class="inline-block px-8 py-4 rounded-full text-white text-xl font-semibold border-2 border-white hover:bg-white hover:text-black transition transform hover:scale-110 shadow-lg">
+            ⬅️ Retour au Portfolio
+        </a>
+    </div>
 </section>
 
 </body>
