@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ff14867-bb64-4a1b-a930-3b958d95cb36" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bibliotechProject.html" beforeDir="false" afterPath="$PROJECT_DIR$/bibliotechProject.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bloodlustProject.html" beforeDir="false" afterPath="$PROJECT_DIR$/bloodlustProject.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/covetousProject.html" beforeDir="false" afterPath="$PROJECT_DIR$/covetousProject.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kimzProject.html" beforeDir="false" afterPath="$PROJECT_DIR$/kimzProject.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lamapadrieProject.html" beforeDir="false" afterPath="$PROJECT_DIR$/lamapadrieProject.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/marbleProject.html" beforeDir="false" afterPath="$PROJECT_DIR$/marbleProject.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/troububbleProject.html" beforeDir="false" afterPath="$PROJECT_DIR$/troububbleProject.html" afterDir="false" />
-    </list>
+    <list default="true" id="3ff14867-bb64-4a1b-a930-3b958d95cb36" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,7 +43,7 @@
       <option name="presentableId" value="Default" />
       <updated>1758556954247</updated>
       <workItem from="1758556955375" duration="7166000" />
-      <workItem from="1761427189754" duration="22342000" />
+      <workItem from="1761427189754" duration="22747000" />
     </task>
     <servers />
   </component>

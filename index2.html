@@ -5,544 +5,311 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Baptiste RUBERTE</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            AOS.init({ duration: 800, once: true });
+            // Typing effect
+            const text = "Gameplay & System Programmer";
+            let i = 0;
+            function typing() {
+                if (i < text.length) {
+                    document.getElementById("typing").textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typing, 80);
+                }
+            }
+            typing();
+        });
+    </script>
     <style>
-        body {
-            margin: 0;
-            font-family: 'Space Grotesk', sans-serif;
-            background-color: #111111;
-            color: #e0e0e0;
-            overflow-x: hidden;
-            transition: background-color 0.5s ease, color 0.5s ease;
-        }
-
-        /* Hero section */
-        .hero-section {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .email {
-            position: absolute;
-            top: 40px;
-            left: 40px;
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            text-transform: uppercase;
-            opacity: 0.5;
-            font-size: 1rem;
-        }
-
-        .contrast-toggle {
-            position: absolute;
-            top: 40px;
-            right: 40px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(to right, #000 50%, #fff 50%);
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .contrast-toggle:hover {
-            box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-            transform: scale(1.05);
-        }
-
-        .full-width-title {
-            font-size: 10vw;
-            font-weight: 700;
-            text-align: center;
-            margin: 0;
-            transition: transform 0.2s ease-out;
-        }
-
-        .center-section {
-            display: flex;
-            align-items: center;
-            margin-top: 40px;
-        }
-
-        .center-text {
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            font-size: 2vw;
-            max-font-size: 3rem;
-            white-space: nowrap;
-            margin-left: 10px;
-            overflow: hidden;
-            border-right: 2px solid #e0e0e0;
-            animation: typing 3s steps(22, end), blink 0.7s step-end infinite alternate;
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        @keyframes blink {
-            50% { border-color: transparent }
-        }
-
-        /* Responsive pour petits écrans */
-        @media (max-width: 640px) {
-            .top-buttons {
-                position: static;      /* plus positionné en absolu */
-                transform: none;       /* annule le translateX */
-                margin-top: 60px;      /* espace en dessous de l'email */
-                justify-content: center;
-                gap: 12px;
-            }
-
-            .hero-section .email {
-                position: static;      /* laisse l'email en haut naturellement */
-                text-align: center;
-                margin-bottom: 16px;   /* petit espace sous l'email */
-            }
-        }
-
-        /* Light mode */
-        body.light-mode {
-            background-color: #ffffff;
-            color: #111111;
-        }
-
-        body.light-mode .project-item {
-            background-color: #f5f5f5;
-            color: #111111;
-        }
-
-        body.light-mode .project-category-bubble {
-            background-color: #dddddd;
-            color: #111111;
-        }
-
-        body.light-mode .project-description,
-        body.light-mode .project-duration {
-            color: #333333;
-        }
-
-        body.light-mode .project-title {
-            color: #111111;
-        }
-
-        body.light-mode .category-btn {
-            border-color: #111111;
-            color: #111111;
-        }
-
-        body.light-mode .category-btn:hover,
-        body.light-mode .category-btn.active {
-            background-color: #111111;
-            color: #ffffff;
-        }
-
-        /* Flèche en mode jour */
-        body.light-mode .project-arrow {
-            background-color: #111111;
-            color: #ffffff;
-        }
-
-        body.light-mode .project-item:hover .project-arrow {
-            background-color: #333333;
-        }
-
-        body.light-mode .project-arrow:hover {
-            background-color: #555555;
-        }
-
-        /* Mode jour pour la section About */
-        body.light-mode .about-section {
-            background-color: #ffffff; /* fond clair */
-        }
-
-        body.light-mode .about-section p {
-            color: #111111; /* texte foncé */
-        }
-
-        body.light-mode .about-section .text-indigo-500 {
-            color: #4f46e5; /* indigo lisible sur fond clair */
-        }
-
-        /* Sections */
-        .projects-section,
-        .about-section,
-        .contact-section {
-            padding: 80px 16px;
-        }
-
-        .projects-title {
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            font-size: clamp(2rem, 6vw, 4rem);
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .projects-categories {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 32px;
-            flex-wrap: wrap;
-        }
-
-        .category-btn {
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            font-size: 1rem;
-            padding: 8px 16px;
-            border: 2px solid #e0e0e0;
-            background: transparent;
-            color: #e0e0e0;
-            cursor: pointer;
-            border-radius: 6px;
-            transition: all 0.3s;
-        }
-
-        .category-btn:hover {
-            background-color: #e0e0e0;
-            color: #111111;
-        }
-
-        .category-btn.active {
-            background-color: #e0e0e0;
-            color: #111111;
-        }
-
-        .projects-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 24px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .project-item {
-            position: relative;
-            flex: 1 1 300px;
-            max-width: 400px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            background-color: #222222;
-            border-radius: 8px;
-            padding: 16px;
-            color: #e0e0e0;
-            overflow: hidden;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .project-image-container {
-            width: 100%;
-            aspect-ratio: 4 / 3;
-            overflow: hidden;
-            border-radius: 8px;
-        }
-
-        .project-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .project-item:hover .project-image-container img {
-            transform: scale(1.1);
-        }
-
-        .project-title-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .project-title {
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 1.3rem;
-        }
-
-        .project-duration {
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            font-size: 1rem;
-            color: #999999;
-            flex-shrink: 0;
-        }
-
-        .project-description {
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            font-size: 1rem;
-            color: #cccccc;
-        }
-
-        .project-info {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            flex-grow: 1;
-        }
-
-        .project-categories {
-            margin-top: auto;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-
-        .project-category-bubble {
-            background-color: #444444;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            color: #e0e0e0;
-        }
-
-        .project-arrow {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            width: 36px;
-            height: 36px;
-            background-color: #e0e0e0;
-            color: #111111;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.2rem;
-            opacity: 0;
-            transition: opacity 0.3s, transform 0.3s, background-color 0.3s;
-        }
-
-        .project-item:hover .project-arrow {
-            opacity: 1;
-            transform: translateY(-2px);
-            background-color: #d4d4d4;
-        }
-
-        .project-arrow:hover {
-            transform: translateY(-2px) scale(1.1);
-            background-color: #c8c8c8;
-        }
-
-        .top-buttons {
-            position: absolute;
-            top: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 20px;
-            z-index: 1000;
-        }
-
-        .top-buttons button {
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            font-size: 1rem;
-            color: #e0e0e0;
-            background: transparent;
-            border: 2px solid #e0e0e0;
-            border-radius: 6px;
-            padding: 6px 14px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .top-buttons button:hover {
-            background-color: #e0e0e0;
-            color: #111111;
-        }
-
-        body.light-mode .top-buttons button {
-            color: #111111;
-            border-color: #111111;
-        }
-
-        body.light-mode .top-buttons button:hover {
-            background-color: #111111;
-            color: #ffffff;
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .about-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .about-image-container:hover img {
-            transform: scale(1.1);
-        }
-
-        /* Contact section - mode nuit */
-        #contact {
-            background-color: #111111; /* fond sombre */
-            color: #e0e0e0;           /* texte clair */
-        }
-
-        /* Titres et paragraphes */
-        #contact h2,
-        #contact p {
-            color: #e0e0e0;
-        }
-
-        /* Icônes sociales */
-        #contact a {
-            background-color: #ffffff;
-            color: #4338ca; /* violet foncé ou ton choix */
-            transition: all 0.3s;
-        }
-
-        #contact a:hover {
-            transform: scale(1.1);
-        }
-
-        /* Formulaire */
-        #contact input,
-        #contact textarea {
-            background-color: #222222;
-            color: #e0e0e0;
-            border: 1px solid #ffffff;
-        }
-
-        #contact input:focus,
-        #contact textarea:focus {
-            outline: none;
-            ring: 2px solid #facc15; /* halo jaune */
-        }
-
-        #contact button {
-            background-color: #4f46e5; /* violet indigo */
-            color: #ffffff;
-        }
-
-        #contact button:hover {
-            background-color: #4338ca; /* violet plus foncé */
-            transform: scale(1.05);
-        }
-
-        /* Mode jour pour Contact */
-        body.light-mode #contact {
-            background-color: #ffffff;  /* fond clair */
-            color: #111111;             /* texte sombre */
-        }
-
-        /* Titres et paragraphes */
-        body.light-mode #contact h2,
-        body.light-mode #contact p {
-            color: #111111;
-        }
-
-        /* Icônes sociales */
-        body.light-mode #contact a {
-            background-color: #111111;  /* icônes inversées si tu veux */
-            color: #ffffff;
-        }
-
-        body.light-mode #contact a:hover {
-            transform: scale(1.1);
-        }
-
-        /* Formulaire */
-        body.light-mode #contact input,
-        body.light-mode #contact textarea {
-            background-color: #f5f5f5;
-            color: #111111;
-            border: 1px solid #111111;
-        }
-
-        body.light-mode #contact input:focus,
-        body.light-mode #contact textarea:focus {
-            outline: none;
-            ring: 2px solid #facc15;
-        }
-
-        body.light-mode #contact button {
-            background-color: #111111;
-            color: #ffffff;
-        }
-
-        body.light-mode #contact button:hover {
-            background-color: #333333;
-            transform: scale(1.05);
-        }
-
-        .non-clickable {
-            pointer-events: none; /* désactive le clic */
-        }
-
-        .non-clickable .project-arrow {
-            display: none; /* masque la flèche */
-        }
+        body { font-family: 'Poppins', sans-serif; }
+        html { scroll-behavior: smooth; }
     </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-900">
 
-<section class="hero-section">
-    <div class="top-buttons">
-        <button onclick="scrollToSection('projects')">Projets</button>
-        <button onclick="scrollToSection('about')">À propos</button>
-        <button onclick="scrollToSection('contact')">Contact</button>
+<!-- Navbar -->
+<nav class="fixed top-0 w-full bg-white shadow-md z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="#hero" class="font-bold text-xl text-indigo-600">Baptiste RUBERTE</a>
+        <div class="space-x-6">
+            <a href="#about" class="hover:text-indigo-600 transition">À propos</a>
+            <a href="#projects" class="hover:text-indigo-600 transition">Projets</a>
+            <a href="#skills" class="hover:text-indigo-600 transition">Compétences</a>
+            <a href="#contact" class="hover:text-indigo-600 transition">Contact</a>
+        </div>
     </div>
+</nav>
 
-    <a href="mailto:ruberte43@gmail.com" class="email">RUBERTE43@GMAIL.COM</a>
-    <h1 class="full-width-title">BAPTISTE RUBERTE</h1>
-    <button class="contrast-toggle" onclick="toggleContrast()"></button>
-    <div class="center-section">
-        <svg class="arrow" width="40" height="30" viewBox="0 0 40 30" fill="none" stroke="#e0e0e0" stroke-width="2" stroke-linecap="round">
-            <line x1="1" y1="0" x2="1" y2="15"/>
-            <line x1="1" y1="15" x2="20" y2="15"/>
-            <line x1="20" y1="15" x2="15" y2="10"/>
-            <line x1="20" y1="15" x2="15" y2="20"/>
-        </svg>
-        <div class="center-text">GAMEPLAY PROGRAMMER</div>
+<!-- Hero -->
+<section id="hero" class="relative h-screen flex flex-col justify-center items-center text-center text-white px-6 overflow-hidden">
+
+    <!-- Vidéo en arrière-plan -->
+    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+        <source src="images/CovetousCove_Trailer.mp4" type="video/mp4">
+        Ton navigateur ne supporte pas la vidéo.
+    </video>
+
+    <!-- Overlay sombre pour lisibilité -->
+    <div class="absolute inset-0 bg-black bg-opacity-80"></div>
+
+    <!-- Contenu -->
+    <div class="relative z-10 flex flex-col items-center">
+        <img src="images/pp.webp" alt="Photo de profil"
+             class="w-60 h-60 rounded-full shadow-2xl border-4 border-white mb-6"
+             data-aos="zoom-in">
+        <h1 class="text-5xl md:text-6xl font-extrabold mb-4" data-aos="fade-down">Baptiste RUBERTE</h1>
+        <p id="typing" class="text-xl md:text-2xl mb-8 font-mono text-yellow-200"></p>
+
+        <div class="relative group" data-aos="zoom-in">
+            <a href="#projects"
+               class="inline-block bg-white text-indigo-600 font-semibold px-6 py-3 rounded-full shadow-lg 
+                      transform transition duration-300 group-hover:scale-105 group-hover:shadow-xl">
+                Voir mes projets
+            </a>
+        </div>
     </div>
 </section>
 
-<section id="projects" class="projects-section reveal">
-    <h2 class="projects-title">Mes projets</h2>
-    <div class="projects-categories">
-        <button class="category-btn" data-category="school">Projets école</button>
-        <button class="category-btn" data-category="personal">Projets personnels</button>
-        <button class="category-btn" data-category="gamejam">Game Jam / Concours</button>
+
+<!-- Projets -->
+<section id="projects" class="py-20 bg-gray-100" data-aos="fade-up">
+    <div class="max-w-6xl mx-auto px-6">
+
+        <h2 class="text-4xl font-bold text-center mb-12">Projets</h2>
+
+        <!-- Projets scolaires -->
+        <h3 class="text-2xl font-semibold mb-6 mt-12 text-indigo-600">Projets réalisés à l'école</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <!-- Projet 1 -->
+            <div class="relative group rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in">
+                <img src="images/Kimz/Kimz_Little.webp" alt="Projet 1" class="w-full h-64 object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition p-4">
+                    <h3 class="text-2xl font-bold text-white mb-4 text-center">Kimz vs les Ragogo</h3>
+                    <!-- Badges -->
+                    <div class="flex flex-wrap justify-center gap-2 mb-4">
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">C#</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">Unity</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">Rap Battle</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">3 mois</span>
+                    </div>
+                    <a href="kimzProject.html" class="bg-indigo-500 px-4 py-2 rounded-full text-white font-semibold transform transition duration-300 hover:scale-110 hover:bg-indigo-400">
+                        Voir plus
+                    </a>
+                </div>
+            </div>
+
+            <!-- Projet 2 -->
+            <div class="relative group rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in">
+                <img src="images/Covetous/CovetousCove_Little.webp" alt="Projet 1" class="w-full h-64 object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition p-4">
+                    <h3 class="text-2xl font-bold text-white mb-4 text-center">Covetous Cove</h3>
+                    <!-- Badges -->
+                    <div class="flex flex-wrap justify-center gap-2 mb-4">
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">C#</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">Unity</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">Shmup</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">Multiplayer Local</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">1 semaine</span>
+                    </div>
+                    <a href="covetousProject.html" class="bg-indigo-500 px-4 py-2 rounded-full text-white font-semibold transform transition duration-300 hover:scale-110 hover:bg-indigo-400">
+                        Voir plus
+                    </a>
+                </div>
+            </div>
+            <!-- Projet 3 -->
+            <div class="relative group rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in">
+                <img src="images/Bibliotech/Bibliotech_Little.webp" alt="Projet 1" class="w-full h-64 object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition p-4">
+                    <h3 class="text-2xl font-bold text-white mb-4 text-center">Bibliotech</h3>
+                    <!-- Badges -->
+                    <div class="flex flex-wrap justify-center gap-2 mb-4">
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">C#</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">Unity</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">Installation Physique</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">1 semaine</span>
+                    </div>
+                    <a href="bibliotechProject.html" class="bg-indigo-500 px-4 py-2 rounded-full text-white font-semibold transform transition duration-300 hover:scale-110 hover:bg-indigo-400">
+                        Voir plus
+                    </a>
+                </div>
+            </div>
+            <!-- Projet 4 -->
+            <div class="relative group rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in">
+                <img src="images/MarbleMadness/Marble_LittleLogo2.webp" alt="Projet 1" class="w-full h-64 object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition p-4">
+                    <h3 class="text-2xl font-bold text-white mb-4 text-center">Marble Madness</h3>
+                    <!-- Badges -->
+                    <div class="flex flex-wrap justify-center gap-2 mb-4">
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">C#</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">Unity</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">Multiplayer Local</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">Installation Physique</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">1 semaine</span>
+                    </div>
+                    <a href="marbleProject.html" class="bg-indigo-500 px-4 py-2 rounded-full text-white font-semibold transform transition duration-300 hover:scale-110 hover:bg-indigo-400">
+                        Voir plus
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game jams -->
+        <h3 class="text-2xl font-semibold mb-6 mt-12 text-indigo-600">Game jams / concours</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <!-- Projet 1 -->
+            <div class="relative group rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in">
+                <img src="images/Lamapadrie/Lamapadrie_Littlepng.webp" alt="Projet 1" class="w-full h-64 object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition p-4">
+                    <h3 class="text-2xl font-bold text-white mb-4 text-center">Lamapadrie</h3>
+                    <!-- Badges -->
+                    <div class="flex flex-wrap justify-center gap-2 mb-4">
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">C#</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">Unity</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">3 jours</span>
+                    </div>
+                    <a href="lamapadrieProject.html" class="bg-indigo-500 px-4 py-2 rounded-full text-white font-semibold transform transition duration-300 hover:scale-110 hover:bg-indigo-400">
+                        Voir plus
+                    </a>
+                </div>
+            </div>
+            <!-- Projet 2 -->
+            <div class="relative group rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in">
+                <img src="images/Troububble/Troububble_Little2.webp" alt="Projet 1" class="w-full h-64 object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition p-4">
+                    <h3 class="text-2xl font-bold text-white mb-4 text-center">Troububble</h3>
+                    <!-- Badges -->
+                    <div class="flex flex-wrap justify-center gap-2 mb-4">
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">C#</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">Unity</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">3 jours</span>
+                    </div>
+                    <a href="troububbleProject.html" class="bg-indigo-500 px-4 py-2 rounded-full text-white font-semibold transform transition duration-300 hover:scale-110 hover:bg-indigo-400">
+                        Voir plus
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projets perso -->
+        <h3 class="text-2xl font-semibold mb-6 mt-12 text-indigo-600">Projets personnels</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <!-- Projet perso 2 -->
+            <div class="relative group rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in">
+                <img src="images/Bloodlust/Bloodlust_Little.webp" alt="Projet 1" class="w-full h-64 object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition p-4">
+                    <h3 class="text-2xl font-bold text-white mb-4 text-center">BloodLustBrawl</h3>
+                    <!-- Badges -->
+                    <div class="flex flex-wrap justify-center gap-2 mb-4">
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">C++</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">Unreal</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">Multiplayer Local</span>
+                    </div>
+                    <a href="bloodlustProject.html" class="bg-indigo-500 px-4 py-2 rounded-full text-white font-semibold transform transition duration-300 hover:scale-110 hover:bg-indigo-400">
+                        Voir plus
+                    </a>
+                </div>
+            </div>
+            <!-- Projet perso 1 -->
+            <div class="relative group rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in">
+                <img src="images/LaserStrikeArena_Little.webp" alt="Projet 1" class="w-full h-64 object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition p-4">
+                    <h3 class="text-2xl font-bold text-white mb-4 text-center">LaserStrikeArena</h3>
+                    <!-- Badges -->
+                    <div class="flex flex-wrap justify-center gap-2 mb-4">
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">C++</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">Unreal</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">Multiplayer</span>
+                    </div>
+                    <a href="laserProject.html" class="bg-indigo-500 px-4 py-2 rounded-full text-white font-semibold transform transition duration-300 hover:scale-110 hover:bg-indigo-400">
+                        Voir plus
+                    </a>
+                </div>
+            </div>
+            <!-- Projet perso 3 -->
+            <div class="relative group rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in">
+                <img src="images/Troububble_Little.webp" alt="Projet 1" class="w-full h-64 object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition p-4">
+                    <h3 class="text-2xl font-bold text-white mb-4 text-center">CampBlood</h3>
+                    <!-- Badges -->
+                    <div class="flex flex-wrap justify-center gap-2 mb-4">
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">C++</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">Unreal</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">Multiplayer</span>
+                    </div>
+                    <a href="campbloodProject.html" class="bg-indigo-500 px-4 py-2 rounded-full text-white font-semibold transform transition duration-300 hover:scale-110 hover:bg-indigo-400">
+                        Voir plus
+                    </a>
+                </div>
+            </div>
+            <!-- Projet perso 3 -->
+            <div class="relative group rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in">
+                <img src="images/Troububble_Little.webp" alt="Projet 1" class="w-full h-64 object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition p-4">
+                    <h3 class="text-2xl font-bold text-white mb-4 text-center">SwissArmy</h3>
+                    <!-- Badges -->
+                    <div class="flex flex-wrap justify-center gap-2 mb-4">
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">C++</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">Unreal</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">Multiplayer</span>
+                    </div>
+                    <a href="armyProject.html" class="bg-indigo-500 px-4 py-2 rounded-full text-white font-semibold transform transition duration-300 hover:scale-110 hover:bg-indigo-400">
+                        Voir plus
+                    </a>
+                </div>
+            </div>
+            <!-- Projet perso 4 -->
+            <div class="relative group rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in">
+                <img src="images/Troububble_Little.webp" alt="Projet 1" class="w-full h-64 object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition p-4">
+                    <h3 class="text-2xl font-bold text-white mb-4 text-center">Zombie</h3>
+                    <!-- Badges -->
+                    <div class="flex flex-wrap justify-center gap-2 mb-4">
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">C++</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">Unreal</span>
+                    </div>
+                    <a href="zombieProject.html" class="bg-indigo-500 px-4 py-2 rounded-full text-white font-semibold transform transition duration-300 hover:scale-110 hover:bg-indigo-400">
+                        Voir plus
+                    </a>
+                </div>
+            </div>
+            <!-- Projet perso 4 -->
+            <div class="relative group rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl" data-aos="zoom-in">
+                <img src="images/Troububble_Little.webp" alt="Projet 1" class="w-full h-64 object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition p-4">
+                    <h3 class="text-2xl font-bold text-white mb-4 text-center">Hide & Seek</h3>
+                    <!-- Badges -->
+                    <div class="flex flex-wrap justify-center gap-2 mb-4">
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">C++</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">Unreal</span>
+                        <span class="bg-white text-sm text-indigo-600 px-2 py-1 rounded">Multiplayer</span>
+                    </div>
+                    <a href="hideProject.html" class="bg-indigo-500 px-4 py-2 rounded-full text-white font-semibold transform transition duration-300 hover:scale-110 hover:bg-indigo-400">
+                        Voir plus
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </div>
-    <div class="projects-grid"></div>
 </section>
 
-<section id="about" class="about-section py-20 bg-white dark:bg-[#111111]" data-aos="fade-up">
-    <div class="reveal max-w-5xl mx-auto px-6">
+<!-- À propos -->
+<section id="about" class="py-20 bg-white" data-aos="fade-up">
+    <div class="max-w-5xl mx-auto px-6">
 
         <!-- Titre centré -->
-        <h2 class="projects-title">À propos</h2>
+        <h2 class="text-4xl font-bold text-center mb-12">À propos</h2>
 
         <!-- Contenu -->
         <div class="grid md:grid-cols-2 gap-12 items-center">
 
             <!-- Texte -->
             <div class="text-center md:text-left">
-                <p class="text-lg text-gray-900 dark:text-gray-300 leading-relaxed">
+                <p class="text-lg text-gray-700 leading-relaxed">
                     Actuellement étudiant en <strong>Master 2 à l’ENJMIN</strong> dans la spécialisation
                     <strong>Programmation</strong>, je me consacre à la conception et au développement
                     d’expériences de jeu innovantes.<br><br>
@@ -560,38 +327,42 @@
 
             <!-- Image -->
             <div class="flex justify-center">
-                <div class="about-image-container overflow-hidden rounded-xl">
-                    <img src="images/about.webp" alt="À propos"
-                         class="about-image w-80 md:w-96 transform transition duration-500 hover:scale-110 object-cover">
-                </div>
+                <img src="images/about.webp" alt="À propos"
+                     class="rounded-2xl shadow-lg w-100 md:w-116 transform transition duration-300 hover:scale-105">
             </div>
         </div>
     </div>
 </section>
 
-<section id="skills" class="py-20 max-w-4xl mx-auto px-6 text-center reveal" data-aos="fade-up">
-    <h2 class="projects-title">Compétences</h2>
-
+<!-- Compétences -->
+<section id="skills" class="py-20 max-w-4xl mx-auto px-6 text-center" data-aos="fade-up">
+    <h2 class="text-4xl font-bold mb-8">Compétences</h2>
     <div class="grid grid-cols-2 md:grid-cols-3 gap-6 text-lg">
-        <p class="skill-item bg-white dark:bg-[#222] dark:text-gray-200 shadow rounded-lg py-4 transform transition duration-300 hover:scale-105">C++</p>
-        <p class="skill-item bg-white dark:bg-[#222] dark:text-gray-200 shadow rounded-lg py-4 transform transition duration-300 hover:scale-105">C#</p>
-        <p class="skill-item bg-white dark:bg-[#222] dark:text-gray-200 shadow rounded-lg py-4 transform transition duration-300 hover:scale-105">Python</p>
-        <p class="skill-item bg-white dark:bg-[#222] dark:text-gray-200 shadow rounded-lg py-4 transform transition duration-300 hover:scale-105">Unity</p>
-        <p class="skill-item bg-white dark:bg-[#222] dark:text-gray-200 shadow rounded-lg py-4 transform transition duration-300 hover:scale-105">Unreal</p>
-        <p class="skill-item bg-white dark:bg-[#222] dark:text-gray-200 shadow rounded-lg py-4 transform transition duration-300 hover:scale-105">Git / Perforce</p>
+        <p class="bg-white shadow rounded-lg py-4 transform transition duration-300 hover:scale-105">C++</p>
+        <p class="bg-white shadow rounded-lg py-4 transform transition duration-300 hover:scale-105">C#</p>
+        <p class="bg-white shadow rounded-lg py-4 transform transition duration-300 hover:scale-105">Python</p>
+        <p class="bg-white shadow rounded-lg py-4 transform transition duration-300 hover:scale-105">Unity</p>
+        <p class="bg-white shadow rounded-lg py-4 transform transition duration-300 hover:scale-105">Unreal</p>
+        <p class="bg-white shadow rounded-lg py-4 transform transition duration-300 hover:scale-105">Git / Perforce</p>
     </div>
 </section>
 
 <!-- Contact -->
-<section id="contact" class="relative py-28 text-white overflow-hidden reveal" data-aos="fade-up">
+<section id="contact" class="relative py-28 bg-gradient-to-r from-purple-500 via-indigo-600 to-pink-500 text-white overflow-hidden" data-aos="fade-up">
     <div class="absolute inset-0 opacity-20">
+        <!-- Formes abstraites / blobs -->
+        <svg class="absolute -top-16 -left-16 w-80 h-80 text-yellow-300" fill="currentColor" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path d="M42.8,-63.4C54.4,-54.4,57.5,-36.2,60,-19.5C62.5,-2.7,64.3,12.7,60.6,28.1C56.9,43.6,47.7,59.2,33.8,63.3C19.9,67.5,0.3,60,-17.3,52.5C-34.9,45,-50.7,37.5,-56.8,25.7C-62.8,13.9,-59.2,-2.3,-52.1,-14.8C-44.9,-27.3,-34.1,-36,-22,-45.3C-9.9,-54.7,4.5,-64.7,20.5,-66.8C36.5,-68.9,54.4,-63.4,42.8,-63.4Z" transform="translate(100 100)" />
+        </svg>
+        <svg class="absolute -bottom-16 -right-16 w-96 h-96 text-indigo-400" fill="currentColor" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path d="M42.8,-63.4C54.4,-54.4,57.5,-36.2,60,-19.5C62.5,-2.7,64.3,12.7,60.6,28.1C56.9,43.6,47.7,59.2,33.8,63.3C19.9,67.5,0.3,60,-17.3,52.5C-34.9,45,-50.7,37.5,-56.8,25.7C-62.8,13.9,-59.2,-2.3,-52.1,-14.8C-44.9,-27.3,-34.1,-36,-22,-45.3C-9.9,-54.7,4.5,-64.7,20.5,-66.8C36.5,-68.9,54.4,-63.4,42.8,-63.4Z" transform="translate(100 100)" />
+        </svg>
     </div>
 
     <div class="relative max-w-4xl mx-auto px-6 text-center">
 
         <!-- Titre -->
-        <h2 class="projects-title">Contact</h2>
-        
+        <h2 class="text-4xl font-bold mb-6">Contact</h2>
         <p class="mb-8 text-lg">
             Tu veux discuter d’un projet ou d’un stage ? Contacte-moi ! 🚀
         </p>
@@ -607,13 +378,20 @@
             </a>
 
             <!-- GitHub -->
-            <a href="https://github.com/Baptar" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full bg-white text-indigo-600 transition transform hover:scale-110 hover:bg-pink-400">
-                <img src="images/github-icon.webp" alt="Itch.io" class="w-6 h-6">
+            <a href="https://github.com/Baptar" target="_blank"
+               class="w-12 h-12 flex items-center justify-center rounded-full bg-white text-indigo-600 transition transform hover:scale-110 hover:bg-yellow-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.29 3.438 9.77 8.207 11.363.6.111.793-.261.793-.58 0-.287-.01-1.244-.015-2.257-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.089-.745.083-.73.083-.73 1.205.085 1.84 1.238 1.84 1.238 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.304.762-1.605-2.665-.305-5.467-1.332-5.467-5.932 0-1.31.469-2.381 1.237-3.221-.124-.305-.536-1.527.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 0 1 3.003-.404c1.018.005 2.044.138 3.003.404 2.291-1.552 3.297-1.23 3.297-1.23.655 1.649.243 2.871.12 3.176.77.84 1.236 1.911 1.236 3.221 0 4.61-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.221 0 1.606-.015 2.898-.015 3.293 0 .322.192.696.799.578C20.565 22.265 24 17.787 24 12.5 24 5.87 18.627.5 12 .5z"/>
+                </svg>
             </a>
-            
+
             <!-- Itch.io -->
-            <a href="https://babaorhume.itch.io" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full bg-white text-indigo-600 transition transform hover:scale-110 hover:bg-pink-400">
-                <img src="images/itchio_logo.webp" alt="Itch.io" class="w-6 h-6">
+            <!-- Manette PS4 -->
+            <a href="https://babaorhume.itch.io" target="_blank"
+               class="w-12 h-12 flex items-center justify-center rounded-full bg-white text-indigo-600 transition transform hover:scale-110 hover:bg-pink-400">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="w-7 h-7" fill="currentColor">
+                    <path d="M480.1 96c-14.5 0-28.6 6.2-38.4 17.2l-19.4 21.7c-18.3 20.6-44.4 32.4-71.7 32.4H289.4c-27.3 0-53.4-11.8-71.7-32.4l-19.4-21.7C188.5 102.2 174.4 96 160 96 116.7 96 80 132.7 80 176v144c0 44.2 35.8 80 80 80 21.7 0 42.6-9.2 57.3-25.3l25.5-28.5c10.6-11.8 25.6-18.7 41.1-18.7h72.3c15.6 0 30.6 6.9 41.1 18.7l25.5 28.5c14.7 16.1 35.6 25.3 57.3 25.3 44.2 0 80-35.8 80-80V176c0-43.3-36.7-80-79.9-80zM208 288a24 24 0 1 1 0-48 24 24 0 1 1 0 48zm224 0a24 24 0 1 1 0-48 24 24 0 1 1 0 48zm-112 64a24 24 0 1 1 0-48 24 24 0 1 1 0 48z"/>
+                </svg>
             </a>
 
 
@@ -630,8 +408,7 @@
                    class="p-3 rounded-lg border border-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-300">
             <textarea name="message" rows="4" placeholder="Ton message" required
                       class="p-3 rounded-lg border border-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-300"></textarea>
-            <button type="submit"
-                    class="bg-indigo-600 dark:bg-indigo-500 text-white font-bold py-3 rounded-lg shadow-lg transform transition duration-300 hover:scale-105 hover:bg-indigo-500 dark:hover:bg-indigo-400">
+            <button type="submit" class="bg-yellow-300 text-indigo-900 font-bold py-3 rounded-lg shadow-lg transform transition duration-300 hover:scale-105 hover:bg-yellow-400">
                 Envoyer
             </button>
         </form>
@@ -639,112 +416,7 @@
     </div>
 </section>
 
-<script>
-    const projects = [
-        { title: "Yurei", category: "Projets école", duration: "En cours", image: "images/yurei_migna.webp", key: "school", tags: ["Horreur", "Gameplay", "Expérimental"], description: "Jeu d'horreur psychologique se déroulant dans les pages hantées d'un manga.<br> Plongez dans le livre et contournez ses règles pour réécrire le récit.", clickable: false},
-        { title: "Kimz VS les Ragogo", category: "Projets école", duration: "3 Mois", image: "images/Kimz/Kimz_Little.webp", key: "school", tags: ["Unity", "Gameplay", "System", "UI"], description: "Jeu de rap battle solo avec deckbuilding et visual novel.", clickable: true , url : "kimzProject.html"},
-        { title: "Covetous Cove", category: "Projets école", duration: "1 semaine", image: "images/Covetous/CovetousCove_Little.webp", key: "school", tags: ["Unity", "Gameplay", "Multijoueur Local"], description: "Shmup multijoueur local mixant coopération contre les ennemis et compétition entre joueurs." , clickable: true , url : "covetousProject.html"},
-        
-        { title: "BloodLustBrawl", category: "Projets personnels", duration: "1 mois", image: "images/Bloodlust/Bloodlust_Little.webp", key: "personal", tags: ["Unreal", "Multijoueur Local", "Party Game"], description: "Jeu d’arène multijoueur local basé sur la physique, avec des éléments de party game et de battle royale miniature." , clickable: true, url : "bloodlustProject.html" },
-        { title: "LaserStrikeArena", category: "Projets personnels", duration: "2 semaines", image: "images/LaserStrikeArena_Little.webp", key: "personal", tags: ["Unreal", "Multijoueur", "FPS", "Compétitif"], description: "Jeu de tir multijoueur en arène. <br>Plongez dans l’action et affrontez d’autres joueurs pour dominer l’arène." , clickable: false },
-        { title: "CampBlood", category: "Projets personnels", duration: "1 semaine", image: "images/Kimz/Kimz_Little.webp", key: "personal", tags: ["Unreal", "Multijoueur","Horreur"], description: "Survivants contre fantôme : explorez, collectez et trouvez un moyen de vous enfuir pour échapper aux attaques du spectre." , clickable: false },
-        { title: "Swiss Army", category: "Projets personnels", duration: "3 semaines", image: "images/Kimz/Kimz_Little.webp", key: "personal", tags: ["Unreal", "Multijoueur", "Shooter"], description: "Inspiré par CSGO, combinez habileté et stratégie pour triompher en match multijoueur." , clickable: false },
-        { title: "Hide & Seek", category: "Projets personnels", duration: "1 mois", image: "images/Kimz/Kimz_Little.webp", key: "personal", tags: ["Unreal", "Multijoueur", "Party Game"], description: "Prototype de jeu d’horreur multijoueur.", clickable: false  },
-        { title: "Zombie", category: "Projets personnels", duration: "1 semaine", image: "images/Kimz/Kimz_Little.webp", key: "personal", tags: ["Unreal", "Survie", "Shooter", "Vue de dessus"], description: "Affrontez des vagues de zombies, améliorez vos armes et ouvrez la voie vers la survie.", clickable: false  },
-        
-        { title: "Lamapadrie", category: "Game Jam / Concours", duration: "72h", image: "images/Lamapadrie/Lamapadrie_Littlepng.webp", key: "gamejam", tags: ["Game Jam", "Unity", "Expérimental"], description: "Explorez un monde étrange aux règles inédites et découvrez comment progresser dans sa logique unique." , clickable: true , url : "lamapadrieProject.html" },
-        { title: "Bibliotech", category: "Game Jam / Concours", duration: "72h", image: "images/Bibliotech/Bibliotech_Little.webp", key: "gamejam", tags: ["Eniarof", "Unity","Installation Physique", "Bibliothèque virtuelle", "Événementiel"], description: "Devenez auteur le temps d’un événement : créez, publiez et explorez des livres générés par les participants." , clickable: true , url : "bibliotechProject.html"},
-        { title: "Marble Madness", category: "Game Jam / Concours", duration: "1 semaine", image: "images/MarbleMadness/Marble_LittleLogo2.webp", key: "gamejam", tags: ["Eniarof", "Unity","Contrôleur alternatif", "Multijoueur Local", "Course"], description: "Envoyez des billes pour déplacer vos trains, sabotez vos adversaires et remportez la course en un temps record.", clickable: true , url : "marbleProject.html" },
-        { title: "Troububble", category: "Game Jam / Concours", duration: "72h", image: "images/Troububble/Troububble_Little2.webp", key: "gamejam", tags: ["Game Jam", "Unity", "Parcours", "Narratif"], description: "Explorez, faites des choix et traversez les hauts et bas de la vie… en tant que bulle fragile mais déterminée.", clickable: true , url : "troububbleProject.html" }
-    ];
 
-    const projectsGrid = document.querySelector('.projects-grid');
-    const buttons = document.querySelectorAll('.category-btn');
-
-    function displayProjects(categoryKey) {
-        projectsGrid.innerHTML = '';
-        const filtered = projects.filter(p => p.key === categoryKey);
-
-        filtered.forEach(p => {
-            const projectDiv = document.createElement('div');
-            projectDiv.className = 'project-item reveal' + (p.clickable === false ? ' non-clickable' : '');
-
-            // Curseur pointer seulement si clickable
-            if (p.clickable) projectDiv.style.cursor = 'pointer';
-
-            const tagsHtml = p.tags.map(tag => `<span class="project-category-bubble">${tag}</span>`).join('');
-            const arrowHtml = p.clickable === false ? '' : '<div class="project-arrow">→</div>';
-
-            projectDiv.innerHTML = `
-            <div class="project-image-container">
-                <img src="${p.image}" alt="${p.title}" class="project-image">
-            </div>
-            <div class="project-info">
-                <div class="project-title-row">
-                    <div class="project-title">${p.title}</div>
-                    <div class="project-duration">${p.duration}</div>
-                </div>
-                <div class="project-description">${p.description || ''}</div>
-                <div class="project-categories">${tagsHtml}</div>
-            </div>
-            ${arrowHtml}
-        `;
-
-            // Click uniquement si clickable
-            if (p.clickable && p.url) {
-                projectDiv.addEventListener('click', () => {
-                    window.open(p.url, '_blank'); // ouvre le lien
-                });
-            }
-
-            projectsGrid.appendChild(projectDiv);
-        });
-
-        revealOnScroll();
-    }
-
-
-    buttons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            buttons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            displayProjects(btn.dataset.category);
-        });
-    });
-
-    displayProjects('school'); // Par défaut
-    document.querySelector('.category-btn[data-category="school"]').classList.add('active');
-
-    function toggleContrast() {
-        document.body.classList.toggle('light-mode');
-    }
-
-    function scrollToSection(sectionId) {
-        const section = document.getElementById(sectionId);
-        if (!section) return;
-
-        const y = section.getBoundingClientRect().top + window.scrollY - 20;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-
-        section.setAttribute('tabindex', '-1');
-        section.focus({ preventScroll: true });
-
-        document.querySelectorAll('.top-buttons button').forEach(btn => {
-            btn.classList.toggle('active', btn.getAttribute('onclick')?.includes(sectionId));
-        });
-    }
-
-    function revealOnScroll() {
-        const reveals = document.querySelectorAll('.reveal');
-        const trigger = window.innerHeight * 0.8;
-        reveals.forEach(r => {
-            const rect = r.getBoundingClientRect();
-            if (rect.top < trigger) r.classList.add('visible');
-        });
-    }
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll();
-</script>
 
 </body>
 </html>
