@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Baptiste RUBERTE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #111111;
+            color: #e0e0e0;
+            overflow-x: hidden;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        /* Hero section */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .email {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            text-transform: uppercase;
+            opacity: 0.5;
+            font-size: 1rem;
+        }
+
+        .contrast-toggle {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(to right, #000 50%, #fff 50%);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .contrast-toggle:hover {
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        .full-width-title {
+            font-size: 10vw;
+            font-weight: 700;
+            text-align: center;
+            margin: 0;
+            transition: transform 0.2s ease-out;
+        }
+
+        .center-section {
+            display: flex;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .center-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 2vw;
+            max-font-size: 3rem;
+            white-space: nowrap;
+            margin-left: 10px;
+            overflow: hidden;
+            border-right: 2px solid #e0e0e0;
+            animation: typing 3s steps(22, end), blink 0.7s step-end infinite alternate;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent }
+        }
+
+        /* Responsive pour petits écrans */
+        @media (max-width: 640px) {
+            .top-buttons {
+                position: static;      /* plus positionné en absolu */
+                transform: none;       /* annule le translateX */
+                margin-top: 60px;      /* espace en dessous de l'email */
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .hero-section .email {
+                position: static;      /* laisse l'email en haut naturellement */
+                text-align: center;
+                margin-bottom: 16px;   /* petit espace sous l'email */
+            }
+        }
+
+        /* Light mode */
+        body.light-mode {
+            background-color: #ffffff;
+            color: #111111;
+        }
+
+        body.light-mode .project-item {
+            background-color: #f5f5f5;
+            color: #111111;
+        }
+
+        body.light-mode .project-category-bubble {
+            background-color: #dddddd;
+            color: #111111;
+        }
+
+        body.light-mode .project-description,
+        body.light-mode .project-duration {
+            color: #333333;
+        }
+
+        body.light-mode .project-title {
+            color: #111111;
+        }
+
+        body.light-mode .category-btn {
+            border-color: #111111;
+            color: #111111;
+        }
+
+        body.light-mode .category-btn:hover,
+        body.light-mode .category-btn.active {
+            background-color: #111111;
+            color: #ffffff;
+        }
+
+        /* Flèche en mode jour */
+        body.light-mode .project-arrow {
+            background-color: #111111;
+            color: #ffffff;
+        }
+
+        body.light-mode .project-item:hover .project-arrow {
+            background-color: #333333;
+        }
+
+        body.light-mode .project-arrow:hover {
+            background-color: #555555;
+        }
+
+        /* Mode jour pour la section About */
+        body.light-mode .about-section {
+            background-color: #ffffff; /* fond clair */
+        }
+
+        body.light-mode .about-section p {
+            color: #111111; /* texte foncé */
+        }
+
+        body.light-mode .about-section .text-indigo-500 {
+            color: #4f46e5; /* indigo lisible sur fond clair */
+        }
+
+        /* Sections */
+        .projects-section,
+        .about-section,
+        .contact-section {
+            padding: 80px 16px;
+        }
+
+        .projects-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: clamp(2rem, 6vw, 4rem);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .projects-categories {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 8px 16px;
+            border: 2px solid #e0e0e0;
+            background: transparent;
+            color: #e0e0e0;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .category-btn:hover {
+            background-color: #e0e0e0;
+            color: #111111;
+        }
+
+        .category-btn.active {
+            background-color: #e0e0e0;
+            color: #111111;
+        }
+
+        .projects-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-item {
+            position: relative;
+            flex: 1 1 300px;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            background-color: #222222;
+            border-radius: 8px;
+            padding: 16px;
+            color: #e0e0e0;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .project-image-container {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .project-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-item:hover .project-image-container img {
+            transform: scale(1.1);
+        }
+
+        .project-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .project-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1.3rem;
+        }
+
+        .project-duration {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            color: #999999;
+            flex-shrink: 0;
+        }
+
+        .project-description {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 1rem;
+            color: #cccccc;
+        }
+
+        .project-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex-grow: 1;
+        }
+
+        .project-categories {
+            margin-top: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .project-category-bubble {
+            background-color: #444444;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            color: #e0e0e0;
+        }
+
+        .project-arrow {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 36px;
+            height: 36px;
+            background-color: #e0e0e0;
+            color: #111111;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s, background-color 0.3s;
+        }
+
+        .project-item:hover .project-arrow {
+            opacity: 1;
+            transform: translateY(-2px);
+            background-color: #d4d4d4;
+        }
+
+        .project-arrow:hover {
+            transform: translateY(-2px) scale(1.1);
+            background-color: #c8c8c8;
+        }
+
+        .top-buttons {
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+
+        .top-buttons button {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            color: #e0e0e0;
+            background: transparent;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 6px 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .top-buttons button:hover {
+            background-color: #e0e0e0;
+            color: #111111;
+        }
+
+        body.light-mode .top-buttons button {
+            color: #111111;
+            border-color: #111111;
+        }
+
+        body.light-mode .top-buttons button:hover {
+            background-color: #111111;
+            color: #ffffff;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image-container:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Contact section - mode nuit */
+        #contact {
+            background-color: #111111; /* fond sombre */
+            color: #e0e0e0;           /* texte clair */
+        }
+
+        /* Titres et paragraphes */
+        #contact h2,
+        #contact p {
+            color: #e0e0e0;
+        }
+
+        /* Icônes sociales */
+        #contact a {
+            background-color: #ffffff;
+            color: #4338ca; /* violet foncé ou ton choix */
+            transition: all 0.3s;
+        }
+
+        #contact a:hover {
+            transform: scale(1.1);
+        }
+
+        /* Formulaire */
+        #contact input,
+        #contact textarea {
+            background-color: #222222;
+            color: #e0e0e0;
+            border: 1px solid #ffffff;
+        }
+
+        #contact input:focus,
+        #contact textarea:focus {
+            outline: none;
+            ring: 2px solid #facc15; /* halo jaune */
+        }
+
+        #contact button {
+            background-color: #4f46e5; /* violet indigo */
+            color: #ffffff;
+        }
+
+        #contact button:hover {
+            background-color: #4338ca; /* violet plus foncé */
+            transform: scale(1.05);
+        }
+
+        /* Mode jour pour Contact */
+        body.light-mode #contact {
+            background-color: #ffffff;  /* fond clair */
+            color: #111111;             /* texte sombre */
+        }
+
+        /* Titres et paragraphes */
+        body.light-mode #contact h2,
+        body.light-mode #contact p {
+            color: #111111;
+        }
+
+        /* Icônes sociales */
+        body.light-mode #contact a {
+            background-color: #111111;  /* icônes inversées si tu veux */
+            color: #ffffff;
+        }
+
+        body.light-mode #contact a:hover {
+            transform: scale(1.1);
+        }
+
+        /* Formulaire */
+        body.light-mode #contact input,
+        body.light-mode #contact textarea {
+            background-color: #f5f5f5;
+            color: #111111;
+            border: 1px solid #111111;
+        }
+
+        body.light-mode #contact input:focus,
+        body.light-mode #contact textarea:focus {
+            outline: none;
+            ring: 2px solid #facc15;
+        }
+
+        body.light-mode #contact button {
+            background-color: #111111;
+            color: #ffffff;
+        }
+
+        body.light-mode #contact button:hover {
+            background-color: #333333;
+            transform: scale(1.05);
+        }
+
+        .non-clickable {
+            pointer-events: none; /* désactive le clic */
+        }
+
+        .non-clickable .project-arrow {
+            display: none; /* masque la flèche */
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero-section">
+    <div class="top-buttons">
+        <button onclick="scrollToSection('projects')">Projets</button>
+        <button onclick="scrollToSection('about')">À propos</button>
+        <button onclick="scrollToSection('contact')">Contact</button>
+    </div>
+
+    <a href="mailto:ruberte43@gmail.com" class="email">RUBERTE43@GMAIL.COM</a>
+    <h1 class="full-width-title">BAPTISTE RUBERTE</h1>
+    <button class="contrast-toggle" onclick="toggleContrast()"></button>
+    <div class="center-section">
+        <svg class="arrow" width="40" height="30" viewBox="0 0 40 30" fill="none" stroke="#e0e0e0" stroke-width="2" stroke-linecap="round">
+            <line x1="1" y1="0" x2="1" y2="15"/>
+            <line x1="1" y1="15" x2="20" y2="15"/>
+            <line x1="20" y1="15" x2="15" y2="10"/>
+            <line x1="20" y1="15" x2="15" y2="20"/>
+        </svg>
+        <div class="center-text">GAMEPLAY PROGRAMMER</div>
+    </div>
+</section>
+
+<section id="projects" class="projects-section reveal">
+    <h2 class="projects-title">Mes projets</h2>
+    <div class="projects-categories">
+        <button class="category-btn" data-category="school">Projets école</button>
+        <button class="category-btn" data-category="personal">Projets personnels</button>
+        <button class="category-btn" data-category="gamejam">Game Jam / Concours</button>
+    </div>
+    <div class="projects-grid"></div>
+</section>
+
+<section id="about" class="about-section py-20 bg-white dark:bg-[#111111]" data-aos="fade-up">
+    <div class="reveal max-w-5xl mx-auto px-6">
+
+        <!-- Titre centré -->
+        <h2 class="projects-title">À propos</h2>
+
+        <!-- Contenu -->
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+
+            <!-- Texte -->
+            <div class="text-center md:text-left">
+                <p class="text-lg text-gray-900 dark:text-gray-300 leading-relaxed">
+                    Actuellement étudiant en <strong>Master 2 à l’ENJMIN</strong> dans la spécialisation
+                    <strong>Programmation</strong>, je me consacre à la conception et au développement
+                    d’expériences de jeu innovantes.<br><br>
+                    Passionné par le <strong>gameplay</strong> et l’architecture technique,
+                    j’aime créer des systèmes solides et pensés pour le joueur comme
+                    pour l’équipe de production.<br><br>
+                    Je suis aussi très <span class="text-indigo-600 font-semibold">créatif</span>,
+                    toujours curieux d’expérimenter de nouvelles idées et d’apporter des solutions
+                    originales aux projets.<br><br>
+                    Mon objectif est de devenir <span class="text-indigo-600 font-semibold">Gameplay & System Programmer</span>,
+                    et je recherche actuellement un <span class="text-indigo-600 font-semibold">stage de fin d’études</span>
+                    pour contribuer à des projets ambitieux et progresser aux côtés de professionnels.
+                </p>
+            </div>
+
+            <!-- Image -->
+            <div class="flex justify-center">
+                <div class="about-image-container overflow-hidden rounded-xl">
+                    <img src="images/about.webp" alt="À propos"
+                         class="about-image w-80 md:w-96 transform transition duration-500 hover:scale-110 object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="skills" class="py-20 max-w-4xl mx-auto px-6 text-center reveal" data-aos="fade-up">
+    <h2 class="projects-title">Compétences</h2>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 text-lg">
+        <p class="skill-item bg-white dark:bg-[#222] dark:text-gray-200 shadow rounded-lg py-4 transform transition duration-300 hover:scale-105">C++</p>
+        <p class="skill-item bg-white dark:bg-[#222] dark:text-gray-200 shadow rounded-lg py-4 transform transition duration-300 hover:scale-105">C#</p>
+        <p class="skill-item bg-white dark:bg-[#222] dark:text-gray-200 shadow rounded-lg py-4 transform transition duration-300 hover:scale-105">Python</p>
+        <p class="skill-item bg-white dark:bg-[#222] dark:text-gray-200 shadow rounded-lg py-4 transform transition duration-300 hover:scale-105">Unity</p>
+        <p class="skill-item bg-white dark:bg-[#222] dark:text-gray-200 shadow rounded-lg py-4 transform transition duration-300 hover:scale-105">Unreal</p>
+        <p class="skill-item bg-white dark:bg-[#222] dark:text-gray-200 shadow rounded-lg py-4 transform transition duration-300 hover:scale-105">Git / Perforce</p>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="relative py-28 text-white overflow-hidden reveal" data-aos="fade-up">
+    <div class="absolute inset-0 opacity-20">
+    </div>
+
+    <div class="relative max-w-4xl mx-auto px-6 text-center">
+
+        <!-- Titre -->
+        <h2 class="projects-title">Contact</h2>
+        
+        <p class="mb-8 text-lg">
+            Tu veux discuter d’un projet ou d’un stage ? Contacte-moi ! 🚀
+        </p>
+
+        <!-- Icônes sociales -->
+        <div class="flex justify-center gap-6 mb-12 text-3xl">
+            <!-- LinkedIn -->
+            <a href="https://linkedin.com/in/baptiste-ruberte-2052a923b" target="_blank"
+               class="w-12 h-12 flex items-center justify-center rounded-full bg-white text-indigo-600 transition transform hover:scale-110 hover:bg-yellow-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M4.98 3.5c0 1.381-1.12 2.5-2.49 2.5S0 4.881 0 3.5 1.12 1 2.49 1s2.49 1.119 2.49 2.5zM.24 8.26h4.5v13.74h-4.5V8.26zM8.12 8.26h4.31v1.88h.06c.6-1.14 2.07-2.34 4.27-2.34 4.56 0 5.4 3 5.4 6.9v7.3h-4.5v-6.47c0-1.54-.03-3.52-2.15-3.52-2.15 0-2.48 1.67-2.48 3.4v6.59h-4.5V8.26z"/>
+                </svg>
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com/Baptar" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full bg-white text-indigo-600 transition transform hover:scale-110 hover:bg-pink-400">
+                <img src="images/github-icon.webp" alt="Itch.io" class="w-6 h-6">
+            </a>
+            
+            <!-- Itch.io -->
+            <a href="https://babaorhume.itch.io" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full bg-white text-indigo-600 transition transform hover:scale-110 hover:bg-pink-400">
+                <img src="images/itchio_logo.webp" alt="Itch.io" class="w-6 h-6">
+            </a>
+
+
+
+
+        </div>
+
+
+        <!-- Formulaire contact -->
+        <form action="https://formspree.io/f/xjkeplzy" method="POST" class="max-w-xl mx-auto grid gap-4">
+            <input type="text" name="name" placeholder="Ton nom" required
+                   class="p-3 rounded-lg border border-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-300">
+            <input type="email" name="email" placeholder="Ton email" required
+                   class="p-3 rounded-lg border border-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-300">
+            <textarea name="message" rows="4" placeholder="Ton message" required
+                      class="p-3 rounded-lg border border-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-300"></textarea>
+            <button type="submit"
+                    class="bg-indigo-600 dark:bg-indigo-500 text-white font-bold py-3 rounded-lg shadow-lg transform transition duration-300 hover:scale-105 hover:bg-indigo-500 dark:hover:bg-indigo-400">
+                Envoyer
+            </button>
+        </form>
+
+    </div>
+</section>
+
+<script>
+    const projects = [
+        { title: "Yurei", category: "Projets école", duration: "En cours", image: "images/yurei_migna.webp", key: "school", tags: ["Horreur", "Gameplay", "Expérimental"], description: "Jeu d'horreur psychologique se déroulant dans les pages hantées d'un manga.<br> Plongez dans le livre et contournez ses règles pour réécrire le récit.", clickable: false},
+        { title: "Kimz VS les Ragogo", category: "Projets école", duration: "3 Mois", image: "images/Kimz/Kimz_Little.webp", key: "school", tags: ["Unity", "Gameplay", "System", "UI"], description: "Jeu de rap battle solo avec deckbuilding et visual novel.", clickable: true , url : "kimzProject.html"},
+        { title: "Covetous Cove", category: "Projets école", duration: "1 semaine", image: "images/Covetous/CovetousCove_Little.webp", key: "school", tags: ["Unity", "Gameplay", "Multijoueur Local"], description: "Shmup multijoueur local mixant coopération contre les ennemis et compétition entre joueurs." , clickable: true , url : "covetousProject.html"},
+        
+        { title: "BloodLustBrawl", category: "Projets personnels", duration: "1 mois", image: "images/Bloodlust/Bloodlust_Little.webp", key: "personal", tags: ["Unreal", "Multijoueur Local", "Party Game"], description: "Jeu d’arène multijoueur local basé sur la physique, avec des éléments de party game et de battle royale miniature." , clickable: true, url : "bloodlustProject.html" },
+        { title: "LaserStrikeArena", category: "Projets personnels", duration: "2 semaines", image: "images/LaserStrikeArena_Little.webp", key: "personal", tags: ["Unreal", "Multijoueur", "FPS", "Compétitif"], description: "Jeu de tir multijoueur en arène. <br>Plongez dans l’action et affrontez d’autres joueurs pour dominer l’arène." , clickable: false },
+        { title: "CampBlood", category: "Projets personnels", duration: "1 semaine", image: "images/Kimz/Kimz_Little.webp", key: "personal", tags: ["Unreal", "Multijoueur","Horreur"], description: "Survivants contre fantôme : explorez, collectez et trouvez un moyen de vous enfuir pour échapper aux attaques du spectre." , clickable: false },
+        { title: "Swiss Army", category: "Projets personnels", duration: "3 semaines", image: "images/Kimz/Kimz_Little.webp", key: "personal", tags: ["Unreal", "Multijoueur", "Shooter"], description: "Inspiré par CSGO, combinez habileté et stratégie pour triompher en match multijoueur." , clickable: false },
+        { title: "Hide & Seek", category: "Projets personnels", duration: "1 mois", image: "images/Kimz/Kimz_Little.webp", key: "personal", tags: ["Unreal", "Multijoueur", "Party Game"], description: "Prototype de jeu d’horreur multijoueur.", clickable: false  },
+        { title: "Zombie", category: "Projets personnels", duration: "1 semaine", image: "images/Kimz/Kimz_Little.webp", key: "personal", tags: ["Unreal", "Survie", "Shooter", "Vue de dessus"], description: "Affrontez des vagues de zombies, améliorez vos armes et ouvrez la voie vers la survie.", clickable: false  },
+        
+        { title: "Lamapadrie", category: "Game Jam / Concours", duration: "72h", image: "images/Lamapadrie/Lamapadrie_Littlepng.webp", key: "gamejam", tags: ["Game Jam", "Unity", "Expérimental"], description: "Explorez un monde étrange aux règles inédites et découvrez comment progresser dans sa logique unique." , clickable: true , url : "lamapadrieProject.html" },
+        { title: "Bibliotech", category: "Game Jam / Concours", duration: "72h", image: "images/Bibliotech/Bibliotech_Little.webp", key: "gamejam", tags: ["Eniarof", "Unity","Installation Physique", "Bibliothèque virtuelle", "Événementiel"], description: "Devenez auteur le temps d’un événement : créez, publiez et explorez des livres générés par les participants." , clickable: true , url : "bibliotechProject.html"},
+        { title: "Marble Madness", category: "Game Jam / Concours", duration: "1 semaine", image: "images/MarbleMadness/Marble_LittleLogo2.webp", key: "gamejam", tags: ["Eniarof", "Unity","Contrôleur alternatif", "Multijoueur Local", "Course"], description: "Envoyez des billes pour déplacer vos trains, sabotez vos adversaires et remportez la course en un temps record.", clickable: true , url : "marbleProject.html" },
+        { title: "Troububble", category: "Game Jam / Concours", duration: "72h", image: "images/Troububble/Troububble_Little2.webp", key: "gamejam", tags: ["Game Jam", "Unity", "Parcours", "Narratif"], description: "Explorez, faites des choix et traversez les hauts et bas de la vie… en tant que bulle fragile mais déterminée.", clickable: true , url : "troububbleProject.html" }
+    ];
+
+    const projectsGrid = document.querySelector('.projects-grid');
+    const buttons = document.querySelectorAll('.category-btn');
+
+    function displayProjects(categoryKey) {
+        projectsGrid.innerHTML = '';
+        const filtered = projects.filter(p => p.key === categoryKey);
+
+        filtered.forEach(p => {
+            const projectDiv = document.createElement('div');
+            projectDiv.className = 'project-item reveal' + (p.clickable === false ? ' non-clickable' : '');
+
+            // Curseur pointer seulement si clickable
+            if (p.clickable) projectDiv.style.cursor = 'pointer';
+
+            const tagsHtml = p.tags.map(tag => `<span class="project-category-bubble">${tag}</span>`).join('');
+            const arrowHtml = p.clickable === false ? '' : '<div class="project-arrow">→</div>';
+
+            projectDiv.innerHTML = `
+            <div class="project-image-container">
+                <img src="${p.image}" alt="${p.title}" class="project-image">
+            </div>
+            <div class="project-info">
+                <div class="project-title-row">
+                    <div class="project-title">${p.title}</div>
+                    <div class="project-duration">${p.duration}</div>
+                </div>
+                <div class="project-description">${p.description || ''}</div>
+                <div class="project-categories">${tagsHtml}</div>
+            </div>
+            ${arrowHtml}
+        `;
+
+            // Click uniquement si clickable
+            if (p.clickable && p.url) {
+                projectDiv.addEventListener('click', () => {
+                    window.open(p.url, '_blank'); // ouvre le lien
+                });
+            }
+
+            projectsGrid.appendChild(projectDiv);
+        });
+
+        revealOnScroll();
+    }
+
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            displayProjects(btn.dataset.category);
+        });
+    });
+
+    displayProjects('school'); // Par défaut
+    document.querySelector('.category-btn[data-category="school"]').classList.add('active');
+
+    function toggleContrast() {
+        document.body.classList.toggle('light-mode');
+    }
+
+    function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (!section) return;
+
+        const y = section.getBoundingClientRect().top + window.scrollY - 20;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+
+        section.setAttribute('tabindex', '-1');
+        section.focus({ preventScroll: true });
+
+        document.querySelectorAll('.top-buttons button').forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('onclick')?.includes(sectionId));
+        });
+    }
+
+    function revealOnScroll() {
+        const reveals = document.querySelectorAll('.reveal');
+        const trigger = window.innerHeight * 0.8;
+        reveals.forEach(r => {
+            const rect = r.getBoundingClientRect();
+            if (rect.top < trigger) r.classList.add('visible');
+        });
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+</script>
+
+</body>
+</html>
